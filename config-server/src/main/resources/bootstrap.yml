@@ -1,0 +1,44 @@
+info:
+  component: Config Server
+server:
+  port: 8888
+ 
+# Discovery Server Access
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:1111/eureka/
+    
+spring:
+  cloud:
+    config:
+      server:
+        native:
+          search-locations: classpath:/shared
+  profiles:
+     active: native
+  application:
+    name: config-server  
+
+
+#eureka:
+#  instance:
+#    hostname: localhost
+#    client:  # Not a client, don't register with yourself
+#    registerWithEureka: true
+#    fetchRegistry: true
+    
+    
+
+    
+
+#  cloud:
+#    config:
+#      server:
+#        git:
+##          uri: https://github.com/atSistemas/cygnus-config
+#          uri: C:\Users\Desarrollo3\Documents\NetBeansProjects\app-microservices\app-config-master
+#        
+##         uri: file:///${HOME}/cygnus-config
+#    message: Hello Spring Cloud!
+#          

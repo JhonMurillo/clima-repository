@@ -1,0 +1,40 @@
+### YAML Template.
+#zuul:
+#  ignoredServices: '*'
+#  prefix: /admin
+#  routes:
+#    user:
+#      path: /user/**
+#      serviceId: user-services
+##      stripPrefix: false
+#      
+## Discovery Server Access
+#eureka:
+#  client:
+#    registerWithEureka: true
+#    serviceUrl:
+#      defaultZone: http://localhost:1111/eureka/
+# 
+#server:
+#  port: 8086   # HTTP (Tomcat) port
+#  
+## Spring properties
+#spring:
+#  application:
+#     name: admin-gateway  # Service registers under this name
+#     
+#info:
+#  component: Admin Gateway
+# 
+#hystrix.command.default.execution.isolation.thread.timeoutInMilliseconds: 80000
+#
+#ribbon:
+#  ConnectTimeout: 3000
+#  ReadTimeout: 60000
+spring:
+  application:
+    name: admin-gateway
+  cloud:
+    config:
+      uri: http://localhost:8888
+      fail-fast: true
