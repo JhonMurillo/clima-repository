@@ -14,8 +14,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Transactional;
 import com.app.demo.interfaces.barrio.facade.BarrioFacade;
 import com.app.demo.interfaces.barrio.service.BarrioService;
+import com.fasterxml.jackson.core.type.TypeReference;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import org.springframework.stereotype.Component;
 
 /**
@@ -56,7 +60,18 @@ public class BarrioFacadeImpl implements BarrioFacade {
 
     @Override
     public List<BarrioAllDTO> findInfoAll() {
-        return  barrioService.findInfoAll();
+
+        String json = barrioService.findInfoAll();
+        if (json == null) {
+            return new ArrayList<>();
+        }
+        try {
+            return objectMapper.readValue(json, new TypeReference<List<BarrioAllDTO>>() {
+            });
+        } catch (IOException ex) {
+            Logger.getLogger(BarrioFacadeImpl.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return null;
     }
 
 //    @Override

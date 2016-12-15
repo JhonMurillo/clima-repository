@@ -5,6 +5,7 @@
  */
 package com.app.demo.domains.barrio;
 
+import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 
 /**
@@ -13,4 +14,6 @@ import org.springframework.data.repository.CrudRepository;
  */
 public interface BarrioRepository extends CrudRepository<Barrio, Integer> {
 
+    @Query(value = "select public.f_barrios_json()", nativeQuery = true)
+    public String findByBarrioCiudadDeparPais();
 }

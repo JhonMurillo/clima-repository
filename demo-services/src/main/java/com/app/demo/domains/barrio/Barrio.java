@@ -41,7 +41,7 @@ public class Barrio implements Serializable {
     @Column(nullable = false)
     @ApiModelProperty(value = "estado", required = true)
     private String estado;
-    @JoinColumn(referencedColumnName = "id" ,foreignKey = @ForeignKey)
+    @JoinColumn(referencedColumnName = "id", foreignKey = @ForeignKey)
     @ManyToOne(optional = false)
     @ApiModelProperty(value = "id_ciudad", required = true)
     private Ciudad idCiudad;

@@ -12,12 +12,14 @@ import org.springframework.beans.factory.annotation.Autowired;
 import com.app.demo.interfaces.barrio.service.BarrioService;
 import java.util.List;
 import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 
 /**
  *
  * @author DESARROLLO
  */
 @Component("barrioService")
+@Service
 public class BarrioServiceImpl implements BarrioService {
 
     @Autowired
@@ -27,10 +29,10 @@ public class BarrioServiceImpl implements BarrioService {
     public List<Barrio> findAll() {
         return (List<Barrio>) barrioRepository.findAll();
     }
-    
-     @Override
-    public List<BarrioAllDTO> findInfoAll() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+
+    @Override
+    public String findInfoAll() {
+      return  barrioRepository.findByBarrioCiudadDeparPais();
     }
 
 //    @Override
@@ -125,6 +127,4 @@ public class BarrioServiceImpl implements BarrioService {
 //        responseUtil.setMessage(ConstanteUtil.MSG_FALLIDO);
 //        return responseUtil;
 //    }
-
-   
 }

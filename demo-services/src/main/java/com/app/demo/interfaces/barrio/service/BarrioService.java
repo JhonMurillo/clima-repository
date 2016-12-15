@@ -6,7 +6,6 @@
 package com.app.demo.interfaces.barrio.service;
 
 import com.app.demo.domains.barrio.Barrio;
-import com.app.demo.interfaces.barrio.dto.BarrioAllDTO;
 import java.util.List;
 
 /**
@@ -17,5 +16,5 @@ public interface BarrioService {
 
     List<Barrio> findAll();
 
-    List<BarrioAllDTO> findInfoAll();
+    String findInfoAll();
 }

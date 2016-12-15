@@ -1,68 +1,60 @@
 /*
- * To change this license header; choose License Headers in Project Properties.
+ * To change this license header; choose License Headers in project properties.
  * To change this template file; choose Tools | Templates
  * and open the template in the editor.
  */
 package com.app.demo.interfaces.barrio.dto;
 
 import java.io.Serializable;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.NamedStoredProcedureQueries;
-import javax.persistence.NamedStoredProcedureQuery;
 
 /**
  *
- * @author DESARROLLO
+ * @author dESARROLLO
  */
-@Entity
-@NamedStoredProcedureQueries({
-    @NamedStoredProcedureQuery(name = "BarrioAllDTO.findInfoAll", procedureName = "procedimiento", resultClasses = BarrioAllDTO.class),})
 public class BarrioAllDTO implements Serializable {
 
-    @Id
     private Integer id;
     private String codigo;
     private String nombre;
     private String estado;
-    private Integer idCiudad;
-    private String codigoCiudad;
-    private String estadoCiudad;
-    private String nombreCiudad;
-    private Integer idDepartamento;
-    private String codigoDepartamento;
-    private String estadoDepartamento;
-    private String nombreDepartamento;
-    private Integer idPais;
-    private String codigoPais;
-    private String estadoPais;
-    private String nombrePais;
+    private Integer idciudad;
+    private String codigociudad;
+    private String estadociudad;
+    private String nombreciudad;
+    private Integer iddepartamento;
+    private String codigodepartamento;
+    private String estadodepartamento;
+    private String nombredepartamento;
+    private Integer idpais;
+    private String codigopais;
+    private String estadopais;
+    private String nombrepais;
 
     public BarrioAllDTO() {
     }
 
-    public BarrioAllDTO(Integer id, String codigo, String nombre, String estado, Integer idCiudad, String codigoCiudad, String estadoCiudad, String nombreCiudad, Integer idDepartamento, String codigoDepartamento, String estadoDepartamento, String nombreDepartamento, Integer idPais, String codigoPais, String estadoPais, String nombrePais) {
+    public BarrioAllDTO(Integer id, String codigo, String nombre, String estado, Integer idciudad, String codigociudad, String estadociudad, String nombreciudad, Integer iddepartamento, String codigodepartamento, String estadodepartamento, String nombredepartamento, Integer idpais, String codigopais, String estadopais, String nombrepais) {
         this.id = id;
         this.codigo = codigo;
         this.nombre = nombre;
         this.estado = estado;
-        this.idCiudad = idCiudad;
-        this.codigoCiudad = codigoCiudad;
-        this.estadoCiudad = estadoCiudad;
-        this.nombreCiudad = nombreCiudad;
-        this.idDepartamento = idDepartamento;
-        this.codigoDepartamento = codigoDepartamento;
-        this.estadoDepartamento = estadoDepartamento;
-        this.nombreDepartamento = nombreDepartamento;
-        this.idPais = idPais;
-        this.codigoPais = codigoPais;
-        this.estadoPais = estadoPais;
-        this.nombrePais = nombrePais;
+        this.idciudad = idciudad;
+        this.codigociudad = codigociudad;
+        this.estadociudad = estadociudad;
+        this.nombreciudad = nombreciudad;
+        this.iddepartamento = iddepartamento;
+        this.codigodepartamento = codigodepartamento;
+        this.estadodepartamento = estadodepartamento;
+        this.nombredepartamento = nombredepartamento;
+        this.idpais = idpais;
+        this.codigopais = codigopais;
+        this.estadopais = estadopais;
+        this.nombrepais = nombrepais;
     }
 
     @Override
     public String toString() {
-        return "BarrioAllDTO{" + "id=" + id + ", codigo=" + codigo + ", nombre=" + nombre + ", estado=" + estado + ", idCiudad=" + idCiudad + ", codigoCiudad=" + codigoCiudad + ", estadoCiudad=" + estadoCiudad + ", nombreCiudad=" + nombreCiudad + ", idDepartamento=" + idDepartamento + ", codigoDepartamento=" + codigoDepartamento + ", estadoDepartamento=" + estadoDepartamento + ", nombreDepartamento=" + nombreDepartamento + ", idPais=" + idPais + ", codigoPais=" + codigoPais + ", estadoPais=" + estadoPais + ", nombrePais=" + nombrePais + '}';
+        return "BarrioAllDTO{" + "id=" + id + ", codigo=" + codigo + ", nombre=" + nombre + ", estado=" + estado + ", idciudad=" + idciudad + ", codigociudad=" + codigociudad + ", estadociudad=" + estadociudad + ", nombreciudad=" + nombreciudad + ", iddepartamento=" + iddepartamento + ", codigodepartamento=" + codigodepartamento + ", estadodepartamento=" + estadodepartamento + ", nombredepartamento=" + nombredepartamento + ", idpais=" + idpais + ", codigopais=" + codigopais + ", estadopais=" + estadopais + ", nombrepais=" + nombrepais + '}';
     }
 
     public Integer getId() {
@@ -73,11 +65,11 @@ public class BarrioAllDTO implements Serializable {
         this.id = id;
     }
 
-    public String getCodigo() {
+    public String getcodigo() {
         return codigo;
     }
 
-    public void setCodigo(String codigo) {
+    public void setcodigo(String codigo) {
         this.codigo = codigo;
     }
 
@@ -97,100 +89,100 @@ public class BarrioAllDTO implements Serializable {
         this.estado = estado;
     }
 
-    public Integer getIdCiudad() {
-        return idCiudad;
+    public Integer getIdciudad() {
+        return idciudad;
     }
 
-    public void setIdCiudad(Integer idCiudad) {
-        this.idCiudad = idCiudad;
+    public void setIdciudad(Integer idciudad) {
+        this.idciudad = idciudad;
     }
 
-    public String getCodigoCiudad() {
-        return codigoCiudad;
+    public String getcodigociudad() {
+        return codigociudad;
     }
 
-    public void setCodigoCiudad(String codigoCiudad) {
-        this.codigoCiudad = codigoCiudad;
+    public void setcodigociudad(String codigociudad) {
+        this.codigociudad = codigociudad;
     }
 
-    public String getEstadoCiudad() {
-        return estadoCiudad;
+    public String getEstadociudad() {
+        return estadociudad;
     }
 
-    public void setEstadoCiudad(String estadoCiudad) {
-        this.estadoCiudad = estadoCiudad;
+    public void setEstadociudad(String estadociudad) {
+        this.estadociudad = estadociudad;
     }
 
-    public String getNombreCiudad() {
-        return nombreCiudad;
+    public String getNombreciudad() {
+        return nombreciudad;
     }
 
-    public void setNombreCiudad(String nombreCiudad) {
-        this.nombreCiudad = nombreCiudad;
+    public void setNombreciudad(String nombreciudad) {
+        this.nombreciudad = nombreciudad;
     }
 
-    public Integer getIdDepartamento() {
-        return idDepartamento;
+    public Integer getIddepartamento() {
+        return iddepartamento;
     }
 
-    public void setIdDepartamento(Integer idDepartamento) {
-        this.idDepartamento = idDepartamento;
+    public void setIddepartamento(Integer iddepartamento) {
+        this.iddepartamento = iddepartamento;
     }
 
-    public String getCodigoDepartamento() {
-        return codigoDepartamento;
+    public String getcodigodepartamento() {
+        return codigodepartamento;
     }
 
-    public void setCodigoDepartamento(String codigoDepartamento) {
-        this.codigoDepartamento = codigoDepartamento;
+    public void setcodigodepartamento(String codigodepartamento) {
+        this.codigodepartamento = codigodepartamento;
     }
 
-    public String getEstadoDepartamento() {
-        return estadoDepartamento;
+    public String getEstadodepartamento() {
+        return estadodepartamento;
     }
 
-    public void setEstadoDepartamento(String estadoDepartamento) {
-        this.estadoDepartamento = estadoDepartamento;
+    public void setEstadodepartamento(String estadodepartamento) {
+        this.estadodepartamento = estadodepartamento;
     }
 
-    public String getNombreDepartamento() {
-        return nombreDepartamento;
+    public String getNombredepartamento() {
+        return nombredepartamento;
     }
 
-    public void setNombreDepartamento(String nombreDepartamento) {
-        this.nombreDepartamento = nombreDepartamento;
+    public void setNombredepartamento(String nombredepartamento) {
+        this.nombredepartamento = nombredepartamento;
     }
 
-    public Integer getIdPais() {
-        return idPais;
+    public Integer getIdpais() {
+        return idpais;
     }
 
-    public void setIdPais(Integer idPais) {
-        this.idPais = idPais;
+    public void setIdpais(Integer idpais) {
+        this.idpais = idpais;
     }
 
-    public String getCodigoPais() {
-        return codigoPais;
+    public String getcodigopais() {
+        return codigopais;
     }
 
-    public void setCodigoPais(String codigoPais) {
-        this.codigoPais = codigoPais;
+    public void setcodigopais(String codigopais) {
+        this.codigopais = codigopais;
     }
 
-    public String getEstadoPais() {
-        return estadoPais;
+    public String getEstadopais() {
+        return estadopais;
     }
 
-    public void setEstadoPais(String estadoPais) {
-        this.estadoPais = estadoPais;
+    public void setEstadopais(String estadopais) {
+        this.estadopais = estadopais;
     }
 
-    public String getNombrePais() {
-        return nombrePais;
+    public String getNombrepais() {
+        return nombrepais;
     }
 
-    public void setNombrePais(String nombrePais) {
-        this.nombrePais = nombrePais;
+    public void setNombrepais(String nombrepais) {
+        this.nombrepais = nombrepais;
     }
 
 }

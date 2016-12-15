@@ -19,24 +19,32 @@ spring:
     cache: false             # Allow Thymeleaf templates to be reloaded at runtime
     prefix: classpath:/templates/    # Trailing / mandatory
   profiles:
-    active: native    
-spring.datasource.url : jdbc:mysql://localhost:3306/demo
-spring.datasource.username : root
-spring.datasource.password : 
-spring.datasource.driver-class-name : com.mysql.jdbc.Driver
-spring.datasource.test-on-borrow : true
-spring.datasource.validation-query : SELECT 1
+    active: native  
+    
+##Spring DataSource Para Mysql
+#spring.datasource.url : jdbc:mysql://localhost:3306/demo
+#spring.datasource.username : root
+#spring.datasource.password : root
+#spring.datasource.driver-class-name : com.mysql.jdbc.Driver
+#spring.datasource.test-on-borrow : true
+#spring.datasource.validation-query : SELECT 1
 
-#logging:
+##Spring DataSource Postgres
+spring.datasource.platform: postgres 
+spring.datasource.url: jdbc:postgresql://localhost:5432/demo
+spring.datasource.username: postgres
+spring.datasource.password: root
+spring.datasource.driver-class-name: org.postgresql.Driver
+#logging: 
 #  file: logs/${spring.application.name}.log
 #  level:
 #    com.netflix.discovery: 'OFF'
 #    org.springframework.cloud: 'DEBUG'
 #    com.atsistemas: 'DEBUG'
 
-# ==========================================================================
-# = JPA / HIBERNATE
-# ==========================================================================
+# ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+# : JPA / HIBERNATE
+# ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 
 # Use spring.jpa.properties.* for Hibernate native properties (the prefix is
 # stripped before adding them to the entity manager).
@@ -48,13 +56,16 @@ spring.jpa.show-sql: true
 # schema will be automatically updated accordingly to java entities found in
 # the project
 spring.jpa.hibernate.ddl-auto: update   
-spring.jpa.database: MYSQL
+spring.jpa.database: POSTGRESQL 
+#spring.jpa.database: MYSQL
             
 # Naming strategy
 spring.jpa.hibernate.naming-strategy: org.hibernate.cfg.ImprovedNamingStrategy
 
 # Allows Hibernate to generate SQL optimized for a particular DBMS for MySQL:MySQL5Dialect - SQLserver:SQLServerDialect
 #spring.jpa.properties.hibernate.dialect: org.hibernate.dialect.MySQLDialect
-spring.jpa.properties.hibernate.dialect: org.hibernate.dialect.MySQL5InnoDBDialect
+#spring.jpa.properties.hibernate.dialect: org.hibernate.dialect.MySQL5InnoDBDialect
+spring.jpa.properties.hibernate.dialect: org.hibernate.dialect.PostgreSQLDialect
+#spring.jpa.properties.hibernate.dialect: org.hibernate.dialect.PostgreSQL82Dialect
                 
 spring.jpa.properties.hibernate.dialect.temp.use_jdbc_metadata_defaults: false
