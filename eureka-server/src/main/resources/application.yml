@@ -1,11 +1,13 @@
 ## YAML Template.
 # Configure this Discovery Server
 eureka:
-  instance:
+ instance:
     hostname: localhost
-  client:  # Not a client, don't register with yourself
-    registerWithEureka: false
-    fetchRegistry: false
+ client:
+   registerWithEureka: false
+   fetchRegistry: false
+ server:
+   waitTimeInMsWhenSyncEmpty: 0
  
 server:
   port: 1111   # HTTP (Tomcat) port

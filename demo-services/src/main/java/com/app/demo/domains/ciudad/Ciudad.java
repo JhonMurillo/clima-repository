@@ -5,14 +5,21 @@
  */
 package com.app.demo.domains.ciudad;
 
+import com.app.demo.domains.barrio.Barrio;
+import com.app.demo.domains.departamento.Departamento;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.Serializable;
+import java.util.Set;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.ForeignKey;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 /**
@@ -20,14 +27,14 @@ import javax.persistence.Table;
  * @author DESARROLLO
  */
 @Entity
-@Table(name = "ciudad")
+@Table(name = "ciudad", schema = "public")
 @ApiModel("Model Ciudad")
 public class Ciudad implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @ApiModelProperty(value = "id", required = true)
-    private Integer id;
+    private Long id;
     @Column(nullable = false, unique = true)
     @ApiModelProperty(value = "codigo", required = true)
     private String codigo;
@@ -37,14 +44,17 @@ public class Ciudad implements Serializable {
     @Column(nullable = false)
     @ApiModelProperty(value = "estado", required = true)
     private String estado;
-    @Column(nullable = false)
+    @JoinColumn(referencedColumnName = "id", foreignKey = @ForeignKey(name = "fk_departamento"))
     @ApiModelProperty(value = "id_departamento", required = true)
-    private Integer idDepartamento;
+    @ManyToOne(optional = false)
+    private Departamento idDepartamento;
+    @OneToMany(mappedBy = "idCiudad")
+    private Set<Barrio> barrios;
 
     public Ciudad() {
     }
 
-    public Ciudad(Integer id, String codigo, String nombre, String estado, Integer idDepartamento) {
+    public Ciudad(Long id, String codigo, String nombre, String estado, Departamento idDepartamento) {
         this.id = id;
         this.codigo = codigo;
         this.nombre = nombre;
@@ -52,12 +62,16 @@ public class Ciudad implements Serializable {
         this.idDepartamento = idDepartamento;
     }
 
+    public Ciudad(Long id) {
+        this.id = id;
+    }
+
     @Override
     public String toString() {
         return "Ciudad{" + "id=" + id + ", codigo=" + codigo + ", nombre=" + nombre + ", estado=" + estado + ", idDepartamento=" + idDepartamento + '}';
     }
 
-    public Integer id() {
+    public Long id() {
         return id;
     }
 
@@ -73,7 +87,7 @@ public class Ciudad implements Serializable {
         return estado;
     }
 
-    public Integer idDepartamento() {
+    public Departamento idDepartamento() {
         return idDepartamento;
     }
 

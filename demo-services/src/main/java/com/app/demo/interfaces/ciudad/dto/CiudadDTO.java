@@ -13,13 +13,13 @@ import java.io.Serializable;
  */
 public class CiudadDTO implements Serializable {
 
-    private Integer id;
+    private Long id;
     private String codigo;
     private String nombre;
     private String estado;
-    private Integer idDepartamento;
+    private Long idDepartamento;
 
-    public CiudadDTO(Integer id, String codigo, String nombre, String estado, Integer idDepartamento) {
+    public CiudadDTO(Long id, String codigo, String nombre, String estado, Long idDepartamento) {
         this.id = id;
         this.codigo = codigo;
         this.nombre = nombre;
@@ -35,11 +35,11 @@ public class CiudadDTO implements Serializable {
         return "CiudadDTO{" + "id=" + id + ", codigo=" + codigo + ", nombre=" + nombre + ", estado=" + estado + ", idDepartamento=" + idDepartamento + '}';
     }
 
-    public Integer getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
@@ -67,11 +67,11 @@ public class CiudadDTO implements Serializable {
         this.estado = estado;
     }
 
-    public Integer getIdDepartamento() {
+    public Long getIdDepartamento() {
         return idDepartamento;
     }
 
-    public void setIdDepartamento(Integer idDepartamento) {
+    public void setIdDepartamento(Long idDepartamento) {
         this.idDepartamento = idDepartamento;
     }
 

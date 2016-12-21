@@ -13,19 +13,19 @@ import java.io.Serializable;
  */
 public class BarrioAllDTO implements Serializable {
 
-    private Integer id;
+    private Long id;
     private String codigo;
     private String nombre;
     private String estado;
-    private Integer idciudad;
+    private Long idciudad;
     private String codigociudad;
     private String estadociudad;
     private String nombreciudad;
-    private Integer iddepartamento;
+    private Long iddepartamento;
     private String codigodepartamento;
     private String estadodepartamento;
     private String nombredepartamento;
-    private Integer idpais;
+    private Long idpais;
     private String codigopais;
     private String estadopais;
     private String nombrepais;
@@ -33,7 +33,7 @@ public class BarrioAllDTO implements Serializable {
     public BarrioAllDTO() {
     }
 
-    public BarrioAllDTO(Integer id, String codigo, String nombre, String estado, Integer idciudad, String codigociudad, String estadociudad, String nombreciudad, Integer iddepartamento, String codigodepartamento, String estadodepartamento, String nombredepartamento, Integer idpais, String codigopais, String estadopais, String nombrepais) {
+    public BarrioAllDTO(Long id, String codigo, String nombre, String estado, Long idciudad, String codigociudad, String estadociudad, String nombreciudad, Long iddepartamento, String codigodepartamento, String estadodepartamento, String nombredepartamento, Long idpais, String codigopais, String estadopais, String nombrepais) {
         this.id = id;
         this.codigo = codigo;
         this.nombre = nombre;
@@ -57,11 +57,11 @@ public class BarrioAllDTO implements Serializable {
         return "BarrioAllDTO{" + "id=" + id + ", codigo=" + codigo + ", nombre=" + nombre + ", estado=" + estado + ", idciudad=" + idciudad + ", codigociudad=" + codigociudad + ", estadociudad=" + estadociudad + ", nombreciudad=" + nombreciudad + ", iddepartamento=" + iddepartamento + ", codigodepartamento=" + codigodepartamento + ", estadodepartamento=" + estadodepartamento + ", nombredepartamento=" + nombredepartamento + ", idpais=" + idpais + ", codigopais=" + codigopais + ", estadopais=" + estadopais + ", nombrepais=" + nombrepais + '}';
     }
 
-    public Integer getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
@@ -89,11 +89,11 @@ public class BarrioAllDTO implements Serializable {
         this.estado = estado;
     }
 
-    public Integer getIdciudad() {
+    public Long getIdciudad() {
         return idciudad;
     }
 
-    public void setIdciudad(Integer idciudad) {
+    public void setIdciudad(Long idciudad) {
         this.idciudad = idciudad;
     }
 
@@ -121,11 +121,11 @@ public class BarrioAllDTO implements Serializable {
         this.nombreciudad = nombreciudad;
     }
 
-    public Integer getIddepartamento() {
+    public Long getIddepartamento() {
         return iddepartamento;
     }
 
-    public void setIddepartamento(Integer iddepartamento) {
+    public void setIddepartamento(Long iddepartamento) {
         this.iddepartamento = iddepartamento;
     }
 
@@ -153,11 +153,11 @@ public class BarrioAllDTO implements Serializable {
         this.nombredepartamento = nombredepartamento;
     }
 
-    public Integer getIdpais() {
+    public Long getIdpais() {
         return idpais;
     }
 
-    public void setIdpais(Integer idpais) {
+    public void setIdpais(Long idpais) {
         this.idpais = idpais;
     }
 

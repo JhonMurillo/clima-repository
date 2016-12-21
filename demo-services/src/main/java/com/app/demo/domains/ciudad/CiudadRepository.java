@@ -11,5 +11,5 @@ import org.springframework.data.repository.CrudRepository;
  *
  * @author DESARROLLO
  */
-public interface CiudadRepository extends CrudRepository<Ciudad, Integer> {
+public interface CiudadRepository extends CrudRepository<Ciudad, Long> {
 }

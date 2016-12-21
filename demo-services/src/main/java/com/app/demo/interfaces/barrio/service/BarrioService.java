@@ -17,4 +17,14 @@ public interface BarrioService {
     List<Barrio> findAll();
 
     String findInfoAll();
+
+    Barrio save(Barrio barrio);
+
+    Barrio findById(Long id);
+
+    List<Barrio> findByEstado(String estado);
+
+    Barrio findByCodigo(String codigo);
+
+    List<Barrio> findByNombre(String nombre);
 }

@@ -31,5 +31,11 @@ info:
 hystrix.command.default.execution.isolation.thread.timeoutInMilliseconds: 90000
 
 ribbon:
-  ConnectTimeout: 3000
+## Max number of retries on the same server (excluding the first try)
+  maxAutoRetries: 1
+## Max number of next servers to retry (excluding the first server)
+  MaxAutoRetriesNextServer: 2
+## Connect timeout used by Apache HttpClient
+  ConnectTimeout: 80000
+## Read timeout used by Apache HttpClient
   ReadTimeout: 80000

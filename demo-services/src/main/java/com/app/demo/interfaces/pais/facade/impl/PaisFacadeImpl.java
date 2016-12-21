@@ -5,7 +5,7 @@
  */
 package com.app.demo.interfaces.pais.facade.impl;
 
-import com.app.app.utils.ObjectMapperUtil;
+import com.app.demo.utils.ObjectMapperUtil;
 import com.app.demo.interfaces.departamento.service.DepartamentoService;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.beans.factory.annotation.Autowired;

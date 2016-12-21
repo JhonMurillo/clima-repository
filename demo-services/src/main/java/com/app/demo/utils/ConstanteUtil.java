@@ -28,4 +28,10 @@ public class ConstanteUtil {
     public static final String MSG_EXITO = "OPERACIÓN EXITOSA.";
     public static final String MSG_FALLIDO = "OPERACIÓN FALLIDA.";
     public static final String CODIGO_EXISTE = "CÓDIGO EXISTE.";
+    
+    /**
+     * ESTADO
+     */
+    public static final String ACTIVO = "ACTIVO";
+    public static final String INACTIVO = "INACTIVO";
 }

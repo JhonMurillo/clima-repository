@@ -18,21 +18,22 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.persistence.UniqueConstraint;
 
 /**
  *
  * @author DESARROLLO
  */
 @Entity
-@Table(name = "barrio")
+@Table(name = "barrio", schema = "public", uniqueConstraints = @UniqueConstraint(columnNames = "codigo", name = "uk_codigo_barrio"))
 @ApiModel("Model Barrio")
 public class Barrio implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @ApiModelProperty(value = "id", required = true)
-    private Integer id;
-    @Column(nullable = false, unique = true)
+    private Long id;
+    @Column(nullable = false)
     @ApiModelProperty(value = "codigo", required = true)
     private String codigo;
     @Column(nullable = false)
@@ -41,12 +42,12 @@ public class Barrio implements Serializable {
     @Column(nullable = false)
     @ApiModelProperty(value = "estado", required = true)
     private String estado;
-    @JoinColumn(referencedColumnName = "id", foreignKey = @ForeignKey)
-    @ManyToOne(optional = false)
+    @JoinColumn(nullable = false, referencedColumnName = "id", foreignKey = @ForeignKey(name = "fk_ciudad"))
+    @ManyToOne(optional = false, targetEntity = Ciudad.class)
     @ApiModelProperty(value = "id_ciudad", required = true)
-    private Ciudad idCiudad;
+    private Long idCiudad;
 
-    public Barrio(Integer id, String codigo, String nombre, String estado, Ciudad idCiudad) {
+    public Barrio(Long id, String codigo, String nombre, String estado, Long idCiudad) {
         this.id = id;
         this.codigo = codigo;
         this.nombre = nombre;
@@ -62,7 +63,7 @@ public class Barrio implements Serializable {
         return "Barrio{" + "id=" + id + ", codigo=" + codigo + ", nombre=" + nombre + ", estado=" + estado + ", idCiudad=" + idCiudad + '}';
     }
 
-    public Integer id() {
+    public Long id() {
         return id;
     }
 
@@ -79,7 +80,15 @@ public class Barrio implements Serializable {
     }
 
     public Ciudad idCiudad() {
-        return idCiudad;
+        return new Ciudad(idCiudad);
+    }
+
+    public Ciudad getIdCiudad() {
+        return new Ciudad(idCiudad);
+    }
+
+    public void setIdCiudad(Long idCiudad) {
+        this.idCiudad = idCiudad;
     }
 
 }

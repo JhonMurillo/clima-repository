@@ -11,5 +11,5 @@ import org.springframework.data.repository.CrudRepository;
  *
  * @author DESARROLLO
  */
-public interface DepartamentoRepository extends CrudRepository<Departamento, Integer> {
+public interface DepartamentoRepository extends CrudRepository<Departamento, Long> {
 }

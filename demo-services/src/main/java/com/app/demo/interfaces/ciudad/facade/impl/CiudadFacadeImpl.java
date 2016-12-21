@@ -5,7 +5,7 @@
  */
 package com.app.demo.interfaces.ciudad.facade.impl;
 
-import com.app.app.utils.ObjectMapperUtil;
+import com.app.demo.utils.ObjectMapperUtil;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Transactional;

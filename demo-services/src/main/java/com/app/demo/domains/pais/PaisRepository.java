@@ -11,5 +11,5 @@ import org.springframework.data.repository.CrudRepository;
  *
  * @author DESARROLLO
  */
-public interface PaisRepository extends CrudRepository<Pais, Integer> {
+public interface PaisRepository extends CrudRepository<Pais, Long> {
 }

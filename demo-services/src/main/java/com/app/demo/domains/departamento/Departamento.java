@@ -5,15 +5,18 @@
  */
 package com.app.demo.domains.departamento;
 
+import com.app.demo.domains.pais.Pais;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.Serializable;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.ForeignKey;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToOne;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 /**
@@ -28,7 +31,7 @@ public class Departamento implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @ApiModelProperty(value = "id", required = true)
-    private Integer id;
+    private Long id;
     @Column(nullable = false, unique = true)
     @ApiModelProperty(value = "codigo", required = true)
     private String codigo;
@@ -38,14 +41,15 @@ public class Departamento implements Serializable {
     @Column(nullable = false)
     @ApiModelProperty(value = "estado", required = true)
     private String estado;
-    @Column(nullable = false)
+    @JoinColumn(referencedColumnName = "id", foreignKey = @ForeignKey)
     @ApiModelProperty(value = "id_pais", required = true)
-    private Integer idPais;
+    @ManyToOne(optional = false)
+    private Pais idPais;
 
     public Departamento() {
     }
 
-    public Departamento(Integer id, String codigo, String nombre, String estado, Integer idPais) {
+    public Departamento(Long id, String codigo, String nombre, String estado, Pais idPais) {
         this.id = id;
         this.codigo = codigo;
         this.nombre = nombre;
@@ -58,7 +62,7 @@ public class Departamento implements Serializable {
         return "Ciudad{" + "id=" + id + ", codigo=" + codigo + ", nombre=" + nombre + ", estado=" + estado + ", idPais=" + idPais + '}';
     }
 
-    public Integer id() {
+    public Long id() {
         return id;
     }
 
@@ -74,7 +78,7 @@ public class Departamento implements Serializable {
         return estado;
     }
 
-    public Integer idPais() {
+    public Pais idPais() {
         return idPais;
     }
 

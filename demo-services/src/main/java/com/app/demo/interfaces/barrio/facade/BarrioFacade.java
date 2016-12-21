@@ -5,6 +5,7 @@
  */
 package com.app.demo.interfaces.barrio.facade;
 
+import com.app.demo.utils.ResponseUtil;
 import com.app.demo.interfaces.barrio.dto.BarrioAllDTO;
 import com.app.demo.interfaces.barrio.dto.BarrioDTO;
 import java.util.List;
@@ -18,4 +19,15 @@ public interface BarrioFacade {
     List<BarrioDTO> findAll();
 
     List<BarrioAllDTO> findInfoAll();
+
+    ResponseUtil registrarBarrio(BarrioDTO barrioDTO);
+
+    List<BarrioDTO> findByEstado(String estado);
+
+    List<BarrioDTO> findByNombre(String nombre);
+
+    BarrioDTO findByCodigo(String codigo);
+
+    BarrioDTO findById(Long id);
+
 }

@@ -27,7 +27,7 @@ public class Pais implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @ApiModelProperty(value = "id", required = true)
-    private Integer id;
+    private Long id;
     @Column(nullable = false, unique = true)
     @ApiModelProperty(value = "codigo", required = true)
     private String codigo;
@@ -41,7 +41,7 @@ public class Pais implements Serializable {
     public Pais() {
     }
 
-    public Pais(Integer id, String codigo, String nombre, String estado) {
+    public Pais(Long id, String codigo, String nombre, String estado) {
         this.id = id;
         this.codigo = codigo;
         this.nombre = nombre;
@@ -53,7 +53,7 @@ public class Pais implements Serializable {
         return "Pais{" + "id=" + id + ", codigo=" + codigo + ", nombre=" + nombre + ", estado=" + estado + '}';
     }
 
-    public Integer id() {
+    public Long id() {
         return id;
     }
 
