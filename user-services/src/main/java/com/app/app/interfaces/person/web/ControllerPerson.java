@@ -31,7 +31,7 @@ import org.springframework.web.bind.annotation.RestController;
 @Api(value = "Person RestController", description = "This API has a CRUD for Person")
 @Produces(APPLICATION_JSON)
 @Consumes(APPLICATION_JSON)
-public class controllerPerson {
+public class ControllerPerson {
 
     @Autowired
     PersonFacade personFacade;

@@ -39,5 +39,10 @@ public class UserServiceImpl implements UserService {
     public User findById(Long id) {
         return userRepository.findOne(id);
     }
+    
+    @Override
+    public User findByUserName(String userName) {
+        return userRepository.findByUserName(userName);
+    }
 
 }

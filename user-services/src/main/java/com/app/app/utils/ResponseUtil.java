@@ -19,6 +19,7 @@ public class ResponseUtil {
     private List responseList;
     private JsonNode objectResponse;
     private Object object;
+    private String token;
 
     public ResponseUtil() {
     }
@@ -73,5 +74,13 @@ public class ResponseUtil {
 
     public void setObject(Object object) {
         this.object = object;
+    }
+
+    public String getToken() {
+        return token;
+    }
+
+    public void setToken(String token) {
+        this.token = token;
     }
 }

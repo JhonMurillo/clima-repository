@@ -1,6 +1,6 @@
 com\app\app\utils\ConstanteUtil.class
-com\app\app\interfaces\user\web\controllerUser.class
 com\app\app\utils\ResponseUtil.class
+com\app\app\interfaces\person\web\ControllerPerson.class
 com\app\app\utils\ObjectMapperUtil.class
 com\app\app\domains\user\User.class
 com\app\app\interfaces\user\service\UserService.class
@@ -13,8 +13,8 @@ com\app\app\interfaces\person\service\PersonService.class
 com\app\app\interfaces\user\service\impl\UserServiceImpl.class
 com\app\app\interfaces\user\facade\impl\UserFacadeImpl.class
 com\app\app\utils\Encrytacion.class
+com\app\app\interfaces\user\web\ControllerUser.class
 com\app\app\domains\person\Person.class
-com\app\app\interfaces\person\web\controllerPerson.class
 com\app\app\utils\MethodsUtil.class
 com\app\app\domains\user\UserRepository.class
 com\app\app\interfaces\user\dto\UserDTO.class

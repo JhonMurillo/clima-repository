@@ -33,7 +33,7 @@ import com.app.app.interfaces.user.facade.UserFacade;
 @Api(value = "User RestController", description = "This API has a CRUD for User")
 @Produces(APPLICATION_JSON)
 @Consumes(APPLICATION_JSON)
-public class controllerUser {
+public class ControllerUser {
 
     @Autowired
     UserFacade userFacade;

@@ -19,10 +19,11 @@ public class UserDTO {
     public UserDTO() {
     }
 
-    public UserDTO(Long id, String userName, String password) {
+    public UserDTO(Long id, String userName, String password, Long idPerson) {
         this.id = id;
         this.userName = userName;
         this.password = password;
+        this.idPerson = idPerson;
     }
 
     public Long getId() {

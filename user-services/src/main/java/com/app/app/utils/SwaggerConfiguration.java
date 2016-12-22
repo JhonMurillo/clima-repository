@@ -45,7 +45,7 @@ public class SwaggerConfiguration {
         return new ApiInfoBuilder()
                 .title("User Services")
                 .description("Spring Boot Documantation  with Swagger")
-                //                .termsOfServiceUrl("http://www-03.ibm.com/software/sla/sladb.nsf/sla/bm?Open")
+                .termsOfServiceUrl("http://www-03.ibm.com/software/sla/sladb.nsf/sla/bm?Open")
                 .contact("Jhon Mario Murillo Cordoba")
                 .license("Apache License Version 2.0")
                 .licenseUrl("https://github.com/IBM-Bluemix/news-aggregator/blob/master/LICENSE")
@@ -56,6 +56,7 @@ public class SwaggerConfiguration {
     private Predicate<String> paths() {
         return or(
                 regex("/User.*"),
+                regex("/Auth.*"),
                 regex("/Person.*"));
     }
 }

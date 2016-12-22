@@ -10,13 +10,6 @@ zuul:
       path: /demo/**
       serviceId: demo-services
       
-# Discovery Server Access
-eureka:
-  client:
-    registerWithEureka: true
-    serviceUrl:
-      defaultZone: http://localhost:1111/eureka/
- 
 server:
   port: 8086   # HTTP (Tomcat) port
   
@@ -24,6 +17,21 @@ server:
 spring:
   application:
      name: admin-gateway  # Service registers under this name
+      
+# Discovery Server Access
+eureka:
+    instance:
+        lease-renewal-interval-in-seconds: 1
+        prefer-ip-address: true
+#   metadata-map:
+#     instance-id: ${vcap.application.instance_id:${spring.application.name}:${spring.application.instance_id:${random.value}}}
+        metadata-map:
+            instance-id: ${spring.application.name}:${spring.application.instance_id:${server.port}:${random.value}}
+    client:
+        registerWithEureka: true
+        serviceUrl:
+            defaultZone: http://localhost:1111/eureka/
+
      
 info:
   component: Admin Gateway

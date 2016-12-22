@@ -1,17 +1,12 @@
 ## YAML Template.
 info:
   component: User Services
-# Spring properties
 
-# Discovery Server Access
-eureka:
-  client:
-    serviceUrl:
-      defaultZone: http://localhost:1111/eureka/
- 
 # HTTP Server
 server:
   port: 0   # HTTP (Tomcat) port
+  
+# Spring properties
 spring:
   application:
      name: user-services  # Service registers under this name
@@ -21,7 +16,36 @@ spring:
     cache: false             # Allow Thymeleaf templates to be reloaded at runtime
     prefix: classpath:/templates/    # Trailing / mandatory
   profiles:
-    active: native    
+    active: native   
+
+# Discovery Server Access
+eureka:    
+    instance:
+        lease-renewal-interval-in-seconds: 1
+        prefer-ip-address: true
+#   metadata-map:
+#     instance-id: ${vcap.application.instance_id:${spring.application.name}:${spring.application.instance_id:${random.value}}}
+        metadataMap:
+            instanceId: ${spring.application.name}:${spring.application.instance_id:${server.port}:${random.value}}
+#    metadataMap:
+#     instanceId: ${spring.application.name}:${random.value}
+#
+#    metadataMap:
+#     instanceId: ${spring.application.name}:${spring.application.instance_id:${random.value}}
+    client:
+   #Indicates how often(in seconds) to fetch the registry information from the eureka server. (Default: 30)
+        registry-fetch-interval-seconds: 30
+   #Indicates how often(in seconds) to replicate instance changes to be replicated to the eureka server. (Default: 30)
+        instance-info-replication-interval-seconds: 30
+   #Indicates how long initially (in seconds) to replicate instance info to the eureka server. (Default: 40)
+        initial-instance-info-replication-interval-seconds: 30
+   
+   #Map of availability zone to list of fully qualified URLs to communicate with eureka server. Each value can be a single URL or a comma separated list of alternative locations. Typically the eureka server URLs carry protocol,host,port,context and version information if any. 
+   #Example: http://ec2-256-156-243-129.compute-1.amazonaws.com:7001/eureka/ 
+   #The changes are effective at runtime at the next service url refresh cycle as specified by eurekaServiceUrlPollIntervalSeconds.
+        serviceUrl:
+            defaultZone: http://localhost:1111/eureka/
+ 
 #spring.datasource.url : jdbc:mysql://localhost:3306/user
 #spring.datasource.username : root
 #spring.datasource.password : root
