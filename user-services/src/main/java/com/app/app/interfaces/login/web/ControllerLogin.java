@@ -5,6 +5,7 @@
  */
 package com.app.app.interfaces.login.web;
 
+import com.app.app.interfaces.login.dto.LogoutDTO;
 import com.app.app.interfaces.login.facade.LoginFacade;
 import com.app.app.interfaces.user.dto.UserDTO;
 import com.app.app.utils.ResponseUtil;
@@ -43,6 +44,13 @@ public class ControllerLogin {
     @ApiOperation(value = "Login", notes = "Return ResponseUtil")
     public ResponseUtil login(@RequestBody @Valid UserDTO credentials, @Context HttpServletRequest request) {
         return loginFacade.login(credentials, request);
+    }
+
+    @RequestMapping(value = "Logout", method = RequestMethod.POST)
+    @ResponseStatus(HttpStatus.CREATED)
+    @ApiOperation(value = "Logout", notes = "Return ResponseUtil")
+    public ResponseUtil logout(@RequestBody @Valid LogoutDTO logoutDTO) {
+        return loginFacade.logout(logoutDTO);
     }
 
 }

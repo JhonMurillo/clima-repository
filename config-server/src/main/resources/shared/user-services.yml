@@ -18,6 +18,10 @@ spring:
   profiles:
     active: native   
 
+
+authapp:
+  secretkey: lallavemasdificil
+
 # Discovery Server Access
 eureka:    
     instance:

@@ -5,6 +5,7 @@
  */
 package com.app.app.interfaces.login.facade;
 
+import com.app.app.interfaces.login.dto.LogoutDTO;
 import com.app.app.interfaces.user.dto.UserDTO;
 import com.app.app.utils.ResponseUtil;
 import javax.servlet.http.HttpServletRequest;
@@ -16,5 +17,7 @@ import javax.servlet.http.HttpServletRequest;
 public interface LoginFacade {
 
     public ResponseUtil login(UserDTO credentials, HttpServletRequest request);
+
+    public ResponseUtil logout(LogoutDTO logoutDTO);
 
 }

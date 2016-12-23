@@ -40,10 +40,23 @@ public class ConstanteUtil {
     public static final String MSG_USER_NO_EXISTE = "USUARIO NO EXISTE.";
     public static final String MSG_PASS_NO_VALIDAD = "CONTRASEÑA INCORRECTA";
     public static final String MSG_NO_ACCESS = "USUARIO NO POSEE ACCESO AL SISTEMA";
+    public static final String MSG_USER_NO_LOGIN = "USUARIO NO ESTA LOGUEADO.";
+    public static final String MSG_USER_ERROR_LOGOUT = "ERROR AL CERRAR LA SESION DEL USUARIO.";
+    public static final String MSG_USER_LOGOUT = "CIERRE DE SESION EXITOSA.";
 
     /**
      * STATES
      */
     public static final Character STATE_ACTIVO = 'A';
     public static final Character STATE_INACTIVO = 'I';
+    /**
+     * STATES_LOGIN
+     */
+    public static final String STATE_LOGIN = "LOGIN";
+    public static final String STATE_LOGOUT = "LOGOUT";
+    /**
+     * STATES_TOKEN
+     */
+    public static final String STATE_EXPIRED = "EXPIRED";
+    public static final String STATE_INITIATED = "INITIATED";
 }
