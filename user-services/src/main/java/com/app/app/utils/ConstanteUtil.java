@@ -47,8 +47,8 @@ public class ConstanteUtil {
     /**
      * STATES
      */
-    public static final Character STATE_ACTIVO = 'A';
-    public static final Character STATE_INACTIVO = 'I';
+    public static final String STATE_ACTIVO = "A";
+    public static final String STATE_INACTIVO = "I";
     /**
      * STATES_LOGIN
      */

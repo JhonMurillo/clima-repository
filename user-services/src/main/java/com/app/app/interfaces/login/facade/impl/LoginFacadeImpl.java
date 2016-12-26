@@ -8,8 +8,8 @@ package com.app.app.interfaces.login.facade.impl;
 import com.app.app.domains.person.Person;
 import com.app.app.domains.user.User;
 import com.app.app.domains.userAccess.UserAccess;
-import com.app.app.infraestruct.AuthUtils;
-import com.app.app.infraestruct.PasswordService;
+import com.app.app.jms.AuthUtils;
+import com.app.app.jms.PasswordService;
 import com.app.app.interfaces.login.dto.LogoutDTO;
 import com.app.app.interfaces.login.facade.LoginFacade;
 import com.app.app.interfaces.person.dto.PersonDTO;
@@ -17,6 +17,7 @@ import com.app.app.interfaces.person.service.PersonService;
 import com.app.app.interfaces.user.dto.UserDTO;
 import com.app.app.interfaces.user.service.UserService;
 import com.app.app.interfaces.userAccess.service.UserAccessService;
+import com.app.app.interfaces.valueList.service.ValueListService;
 import com.app.app.utils.ConstanteUtil;
 import com.app.app.utils.ObjectMapperUtil;
 import com.app.app.utils.ResponseUtil;
@@ -55,6 +56,9 @@ public class LoginFacadeImpl implements LoginFacade {
     private PersonService personService;
 
     @Autowired
+    private ValueListService valueListService;
+
+    @Autowired
     private AuthUtils authUtils;
 
     public ObjectMapper objectMapper = ObjectMapperUtil.getInstanceObjectMapper();
@@ -77,7 +81,11 @@ public class LoginFacadeImpl implements LoginFacade {
             return responseUtil;
         }
         person = personService.findById(user.idPerson());
-        if (person != null && person.state().equals(ConstanteUtil.STATE_ACTIVO)) {
+        String state = "";
+        if (person != null) {
+            state = valueListService.findById(person.idState()).description();
+        }
+        if (person != null && state.equals(ConstanteUtil.STATE_ACTIVO)) {
             boolean passok = PasswordService.equalsPassword(credentials.getPassword(), user.password());
             if (passok) {
                 PersonDTO personDTO = new PersonDTO();

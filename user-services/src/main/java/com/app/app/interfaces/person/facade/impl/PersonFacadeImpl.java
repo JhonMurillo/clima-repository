@@ -24,6 +24,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.transaction.TransactionSystemException;
+import com.app.app.jms.messages.JmsUserService;
 
 /**
  *
@@ -32,15 +33,18 @@ import org.springframework.transaction.TransactionSystemException;
 @Component("PersonFacade")
 @Transactional
 public class PersonFacadeImpl implements PersonFacade {
-
+    
     @Autowired
     PersonService personService;
-
+    
     @Autowired
     UserService userService;
-
+    
+    @Autowired
+    JmsUserService jmsUser;
+    
     public ObjectMapper objectMapper = ObjectMapperUtil.getInstanceObjectMapper();
-
+    
     @Override
     public ResponseUtil savePerson(PersonDTO personDTO) {
         ResponseUtil responseUtil = new ResponseUtil();
@@ -54,8 +58,9 @@ public class PersonFacadeImpl implements PersonFacade {
             userService.save(user);
             userDTO = objectMapper.convertValue(user, UserDTO.class);
             personDTO = objectMapper.convertValue(person, PersonDTO.class);
-            userDTO.setPassword(null);
             personDTO.setUserDTO(userDTO);
+//            jmsUser.sendUser(personDTO);
+            personDTO.getUserDTO().setPassword(null);
             responseUtil.setTipo(ConstanteUtil.CODE_OK);
             responseUtil.setMessage(ConstanteUtil.MSG_EXITO);
             responseUtil.setObject(personDTO);

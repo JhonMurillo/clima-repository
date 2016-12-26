@@ -6,9 +6,12 @@ zuul:
     user:
       path: /user/**
       serviceId: user-services
-    demo:
-      path: /demo/**
-      serviceId: demo-services
+    city:
+      path: /city/**
+      serviceId: city-services
+    vlist:
+      path: /vlist/**
+      serviceId: value-list-services
       
 server:
   port: 8086   # HTTP (Tomcat) port
@@ -26,7 +29,7 @@ eureka:
 #   metadata-map:
 #     instance-id: ${vcap.application.instance_id:${spring.application.name}:${spring.application.instance_id:${random.value}}}
         metadata-map:
-            instance-id: ${spring.application.name}:${spring.application.instance_id:${server.port}:${random.value}}
+            instance-id: ${spring.application.name}:${spring.application.instance_id:${random.value}}
     client:
         registerWithEureka: true
         serviceUrl:
