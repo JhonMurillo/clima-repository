@@ -11,5 +11,9 @@ package com.app.weather.jms.messages;
  */
 public interface JmsWeatherService {
 
-//    void userCreado(String user);
+    void createPerson(String person);
+    
+    void createValueList(String valueList);
+
+    void createCity(String city);
 }

@@ -8,8 +8,6 @@ server:
   
 # Spring properties
 spring:
-  application:
-     name: value-list-services  # Service registers under this name
   freemarker:
     enabled: false           # Ignore Eureka dashboard FreeMarker templates
   thymeleaf:
@@ -17,6 +15,10 @@ spring:
     prefix: classpath:/templates/    # Trailing / mandatory
   profiles:
     active: native   
+  activemq:
+    broker-url: tcp://127.0.0.1:61616
+    user: admin
+    password: admin
 
 # Discovery Server Access
 eureka:    
@@ -92,17 +94,14 @@ spring.jpa.hibernate.naming-strategy: org.hibernate.cfg.ImprovedNamingStrategy
 spring.jpa.properties.hibernate.dialect: org.hibernate.dialect.PostgreSQLDialect
                 
 spring.jpa.properties.hibernate.dialect.temp.use_jdbc_metadata_defaults: false
-spring:
- activemq:
-   broker-url: tcp://127.0.0.1:61616
-   user: admin
-   password: admin
-#jms:
-#   cache:
-#       size: 10
-#   clientid:
-#      queue: userclientqueuemessages
+ 
+jms:
+   cache:
+       size: 10
+   clientid:
+      queue: valuelistclientqueuemessages
+      topic: valuelistclienttopicmessages
 #       
-#mensajes:
-#   queue:
-#       jmssenduser: jmssenduser
+messages:
+   queue:
+     jmsvaluelist: jmsvaluelist

@@ -5,6 +5,7 @@
  */
 package com.app.app.domains.cityPerson;
 
+import java.util.List;
 import org.springframework.data.repository.CrudRepository;
 
 /**
@@ -13,4 +14,9 @@ import org.springframework.data.repository.CrudRepository;
  */
 public interface CityPersonRepository extends CrudRepository<CityPerson, Long> {
 
+    List<CityPerson> findByIdPerson(Long idPerson);
+
+    List<CityPerson> findByIdCity(Long idCity);
+
+    CityPerson findByIdCityAndIdPerson(Long idCity, Long idPerson);
 }

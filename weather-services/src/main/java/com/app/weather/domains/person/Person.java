@@ -11,8 +11,6 @@ import java.io.Serializable;
 import java.util.Calendar;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
@@ -46,21 +44,18 @@ public class Person implements Serializable {
     @ApiModelProperty(value = "the  email", required = true)
     private String email;
     @Column(nullable = false)
-    @ApiModelProperty(value = "the  state", required = true)
-    private Character state;
+    @ApiModelProperty(value = "the  idState", required = true)
+    private Long idState;
     @Column(nullable = false)
-    @ApiModelProperty(value = "the  gender", required = true)
-    private String gender;
+    @ApiModelProperty(value = "the  idGender", required = true)
+    private Long idGender;
     @Column(nullable = false)
     @ApiModelProperty(value = "the  birthDate", required = true)
     @Temporal(javax.persistence.TemporalType.DATE)
     private Calendar birthDate;
     @Column(nullable = false)
-    @ApiModelProperty(value = "the  gender", required = true)
-    private String actualCity;
-    @Column(nullable = false)
-    @ApiModelProperty(value = "the  gender", required = true)
-    private String bornCity;
+    @ApiModelProperty(value = "the  idBornCity", required = true)
+    private Long idBornCity;
 
     public Person() {
     }
@@ -73,26 +68,25 @@ public class Person implements Serializable {
         this.email = email;
     }
 
-    public Person(Long id, String name, String lastname, String phone, String email, Character state) {
+    public Person(Long id, String name, String lastname, String phone, String email, Long idState) {
         this.id = id;
         this.name = name;
         this.lastname = lastname;
         this.phone = phone;
         this.email = email;
-        this.state = state;
+        this.idState = idState;
     }
 
-    public Person(Long id, String name, String lastname, String phone, String email, Character state, String gender, Calendar birthDate, String actualCity, String bornCity) {
+    public Person(Long id, String name, String lastname, String phone, String email, Long idState, Long idGender, Calendar birthDate, Long idBornCity) {
         this.id = id;
         this.name = name;
         this.lastname = lastname;
         this.phone = phone;
         this.email = email;
-        this.state = state;
-        this.gender = gender;
+        this.idState = idState;
+        this.idGender = idGender;
         this.birthDate = birthDate;
-        this.actualCity = actualCity;
-        this.bornCity = bornCity;
+        this.idBornCity = idBornCity;
     }
 
     public Long id() {
@@ -115,24 +109,20 @@ public class Person implements Serializable {
         return email;
     }
 
-    public Character state() {
-        return state;
+    public Long idState() {
+        return idState;
     }
 
     public Calendar birthDate() {
         return birthDate;
     }
 
-    public String actualCity() {
-        return actualCity;
+    public Long idBornCity() {
+        return idBornCity;
     }
 
-    public String bornCity() {
-        return bornCity;
-    }
-
-    public String gender() {
-        return gender;
+    public Long idGender() {
+        return idGender;
     }
 
 }

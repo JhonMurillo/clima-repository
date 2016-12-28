@@ -22,7 +22,7 @@ spring:
 
 
 authapp:
-  secretkey: lallavemasdificil
+  secretkey: QWE*123456789*qaz123*
 
 # Discovery Server Access
 eureka:
@@ -89,8 +89,10 @@ jms:
        size: 10
    clientid:
       queue: userclientqueuemessages
+      topic: userclienttopicmessages
        
 messages:
    queue:
        jmscity: jmscity
-       jmssenduser: jmssenduser
+       jmsuser: jmsuser
+       jmsvaluelist: jmsvaluelist

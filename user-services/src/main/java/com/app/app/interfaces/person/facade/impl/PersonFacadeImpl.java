@@ -7,7 +7,10 @@ package com.app.app.interfaces.person.facade.impl;
 
 import com.app.app.domains.person.Person;
 import com.app.app.domains.user.User;
+import com.app.app.interfaces.cityPerson.dto.CityPersonDTO;
+import com.app.app.interfaces.cityPerson.facade.CityPersonFacade;
 import com.app.app.interfaces.person.dto.PersonDTO;
+import com.app.app.interfaces.person.dto.PersonWeatherDTO;
 import com.app.app.interfaces.person.facade.PersonFacade;
 import com.app.app.interfaces.person.service.PersonService;
 import com.app.app.interfaces.user.dto.UserDTO;
@@ -25,6 +28,9 @@ import java.util.logging.Logger;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.transaction.TransactionSystemException;
 import com.app.app.jms.messages.JmsUserService;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Objects;
 
 /**
  *
@@ -33,18 +39,21 @@ import com.app.app.jms.messages.JmsUserService;
 @Component("PersonFacade")
 @Transactional
 public class PersonFacadeImpl implements PersonFacade {
-    
+
     @Autowired
     PersonService personService;
-    
+
     @Autowired
     UserService userService;
-    
+
     @Autowired
-    JmsUserService jmsUser;
-    
+    CityPersonFacade cityPersonFacade;
+
+    @Autowired
+    JmsUserService jmsUserService;
+
     public ObjectMapper objectMapper = ObjectMapperUtil.getInstanceObjectMapper();
-    
+
     @Override
     public ResponseUtil savePerson(PersonDTO personDTO) {
         ResponseUtil responseUtil = new ResponseUtil();
@@ -59,7 +68,33 @@ public class PersonFacadeImpl implements PersonFacade {
             userDTO = objectMapper.convertValue(user, UserDTO.class);
             personDTO = objectMapper.convertValue(person, PersonDTO.class);
             personDTO.setUserDTO(userDTO);
-//            jmsUser.sendUser(personDTO);
+            PersonWeatherDTO personWeatherDTO = new PersonWeatherDTO();
+            personWeatherDTO.setListCityDelete(new ArrayList<>());
+            personWeatherDTO.setListFrecuentCity(new ArrayList<>());
+            List<CityPersonDTO> cityPersonDTOs = cityPersonFacade.findByIdPerson(person.id());
+            for (CityPersonDTO cityPersonDTO : cityPersonDTOs) {
+                boolean flag = false;
+                for (Long idCity : personDTO.getListFrecuentCity()) {
+                    if (Objects.equals(idCity, cityPersonDTO.getIdCity())) {
+                        flag = true;
+                    }
+                }
+                if (!flag) {
+                    personWeatherDTO.getListCityDelete().add(cityPersonDTO.getId());
+                }
+            }
+
+            for (Long id : personWeatherDTO.getListCityDelete()) {
+                cityPersonFacade.delete(id);
+            }
+
+            for (Long idCity : personDTO.getListFrecuentCity()) {
+                CityPersonDTO cityPersonDTO = new CityPersonDTO();
+                cityPersonDTO = cityPersonFacade.findByIdCityAndIdPerson(idCity, person.id());
+                personWeatherDTO.getListFrecuentCity().add(cityPersonFacade.save(cityPersonDTO));
+            }
+
+            jmsUserService.sendPerson(personWeatherDTO);
             personDTO.getUserDTO().setPassword(null);
             responseUtil.setTipo(ConstanteUtil.CODE_OK);
             responseUtil.setMessage(ConstanteUtil.MSG_EXITO);

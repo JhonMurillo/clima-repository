@@ -6,7 +6,6 @@
 package com.app.app.interfaces.person.dto;
 
 import com.app.app.interfaces.user.dto.UserDTO;
-import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
@@ -25,7 +24,6 @@ public class PersonDTO {
     private Long idGender;
     private Date birthDate;
     private Long idBornCity;
-    private String bornCity;
     private UserDTO userDTO;
     private List<Long> listFrecuentCity;
 
@@ -96,14 +94,6 @@ public class PersonDTO {
 
     public void setBirthDate(Date birthDate) {
         this.birthDate = birthDate;
-    }
-
-    public String getBornCity() {
-        return bornCity;
-    }
-
-    public void setBornCity(String bornCity) {
-        this.bornCity = bornCity;
     }
 
     public Long getIdState() {

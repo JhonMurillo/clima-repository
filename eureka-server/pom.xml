@@ -17,19 +17,19 @@
     </properties>
     <dependencies>
         <dependency>
-            <!-- Setup Spring Boot -->
+             <!--Setup Spring Boot--> 
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter</artifactId>
         </dependency>
  
         <dependency>
-            <!-- Setup Spring MVC & REST, use Embedded Tomcat -->
+             <!--Setup Spring MVC & REST, use Embedded Tomcat--> 
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
         </dependency>
  
         <dependency>
-            <!-- Spring Cloud starter -->
+             <!--Spring Cloud starter--> 
             <groupId>org.springframework.cloud</groupId>
             <artifactId>spring-cloud-starter</artifactId>
         </dependency>
@@ -39,7 +39,7 @@
             <artifactId>spring-boot-starter-thymeleaf</artifactId>
         </dependency>
         <dependency>
-            <!-- Eureka for service registration -->
+             <!--Eureka for service registration--> 
             <groupId>org.springframework.cloud</groupId>
             <artifactId>spring-cloud-starter-eureka-server</artifactId>
         </dependency>

@@ -5,7 +5,7 @@
  */
 package com.app.weather.interfaces.person.facade;
 
-import com.app.weather.interfaces.person.dto.PersonDTO;
+import com.app.weather.interfaces.person.dto.PersonWeatherDTO;
 import com.app.weather.utils.ResponseUtil;
 
 /**
@@ -14,6 +14,6 @@ import com.app.weather.utils.ResponseUtil;
  */
 public interface PersonFacade {
 
-    ResponseUtil savePerson(PersonDTO personDTO);
+    ResponseUtil savePerson(PersonWeatherDTO personWeatherDTO);
 
 }

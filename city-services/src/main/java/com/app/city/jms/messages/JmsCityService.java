@@ -14,4 +14,6 @@ import com.app.city.interfaces.city.dto.CityDTO;
 public interface JmsCityService {
 
     void sendCity(CityDTO cityDTO);
+
+    void createValueList(String valueList);
 }

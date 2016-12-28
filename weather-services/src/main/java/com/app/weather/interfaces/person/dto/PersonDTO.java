@@ -7,6 +7,7 @@ package com.app.weather.interfaces.person.dto;
 
 import com.app.weather.interfaces.user.dto.UserDTO;
 import java.util.Date;
+import java.util.List;
 
 /**
  *
@@ -19,23 +20,23 @@ public class PersonDTO {
     private String lastname;
     private String phone;
     private String email;
-    private Character state;
-    private String gender;
+    private Long idState;
+    private Long idGender;
     private Date birthDate;
-    private String actualCity;
-    private String bornCity;
+    private Long idBornCity;
     private UserDTO userDTO;
+    private List<Long> listFrecuentCity;
 
     public PersonDTO() {
     }
 
-    public PersonDTO(Integer id, String name, String lastname, String phone, String email, Character state, UserDTO userDTO) {
+    public PersonDTO(Integer id, String name, String lastname, String phone, String email, Long idState, UserDTO userDTO) {
         this.id = id;
         this.name = name;
         this.lastname = lastname;
         this.phone = phone;
         this.email = email;
-        this.state = state;
+        this.idState = idState;
         this.userDTO = userDTO;
     }
 
@@ -57,10 +58,6 @@ public class PersonDTO {
 
     public String getEmail() {
         return email;
-    }
-
-    public Character getState() {
-        return state;
     }
 
     public UserDTO getUserDTO() {
@@ -87,20 +84,8 @@ public class PersonDTO {
         this.email = email;
     }
 
-    public void setState(Character state) {
-        this.state = state;
-    }
-
     public void setUserDTO(UserDTO userDTO) {
         this.userDTO = userDTO;
-    }
-
-    public String getGender() {
-        return gender;
-    }
-
-    public void setGender(String gender) {
-        this.gender = gender;
     }
 
     public Date getBirthDate() {
@@ -111,20 +96,36 @@ public class PersonDTO {
         this.birthDate = birthDate;
     }
 
-    public String getActualCity() {
-        return actualCity;
+    public Long getIdState() {
+        return idState;
     }
 
-    public void setActualCity(String actualCity) {
-        this.actualCity = actualCity;
+    public void setIdState(Long idState) {
+        this.idState = idState;
     }
 
-    public String getBornCity() {
-        return bornCity;
+    public Long getIdGender() {
+        return idGender;
     }
 
-    public void setBornCity(String bornCity) {
-        this.bornCity = bornCity;
+    public void setIdGender(Long idGender) {
+        this.idGender = idGender;
+    }
+
+    public Long getIdBornCity() {
+        return idBornCity;
+    }
+
+    public void setIdBornCity(Long idBornCity) {
+        this.idBornCity = idBornCity;
+    }
+
+    public List<Long> getListFrecuentCity() {
+        return listFrecuentCity;
+    }
+
+    public void setListFrecuentCity(List<Long> listFrecuentCity) {
+        this.listFrecuentCity = listFrecuentCity;
     }
 
 }

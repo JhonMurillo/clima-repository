@@ -32,16 +32,6 @@ eureka:
   client:
     serviceUrl:
       defaultZone: http://localhost:1111/eureka/
- 
-
-    
-##Spring DataSource Para Mysql
-#spring.datasource.url : jdbc:mysql://localhost:3306/demo
-#spring.datasource.username : root
-#spring.datasource.password : root
-#spring.datasource.driver-class-name : com.mysql.jdbc.Driver
-#spring.datasource.test-on-borrow : true
-#spring.datasource.validation-query : SELECT 1
 
 ##Spring DataSource Postgres
 spring.datasource.platform: postgres 
@@ -88,7 +78,9 @@ jms:
        size: 10
    clientid:
       queue: cityclientqueuemessages
+      topic: cityclienttopicmessages
        
 messages:
    queue:
        jmscity: jmscity
+       jmsvaluelist: jmsvaluelist

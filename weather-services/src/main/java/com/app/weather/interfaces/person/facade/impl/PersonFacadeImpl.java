@@ -8,6 +8,7 @@ package com.app.weather.interfaces.person.facade.impl;
 import com.app.weather.domains.person.Person;
 import com.app.weather.domains.user.User;
 import com.app.weather.interfaces.person.dto.PersonDTO;
+import com.app.weather.interfaces.person.dto.PersonWeatherDTO;
 import com.app.weather.interfaces.person.facade.PersonFacade;
 import com.app.weather.interfaces.person.service.PersonService;
 import com.app.weather.interfaces.user.dto.UserDTO;
@@ -41,22 +42,22 @@ public class PersonFacadeImpl implements PersonFacade {
     public ObjectMapper objectMapper = ObjectMapperUtil.getInstanceObjectMapper();
 
     @Override
-    public ResponseUtil savePerson(PersonDTO personDTO) {
+    public ResponseUtil savePerson(PersonWeatherDTO personWeatherDTO) {
         ResponseUtil responseUtil = new ResponseUtil();
         try {
-            UserDTO userDTO = personDTO.getUserDTO();
-            Person person = objectMapper.convertValue(personDTO, Person.class);
+            UserDTO userDTO = personWeatherDTO.getUserDTO();
+            Person person = objectMapper.convertValue(personWeatherDTO, Person.class);
             personService.save(person);
             userDTO.setIdPerson(person.id());
             User user = objectMapper.convertValue(userDTO, User.class);
             userService.save(user);
             userDTO = objectMapper.convertValue(user, UserDTO.class);
-            personDTO = objectMapper.convertValue(person, PersonDTO.class);
+            personWeatherDTO = objectMapper.convertValue(person, PersonWeatherDTO.class);
             userDTO.setPassword(null);
-            personDTO.setUserDTO(userDTO);
+            personWeatherDTO.setUserDTO(userDTO);
             responseUtil.setTipo(ConstanteUtil.CODE_OK);
             responseUtil.setMessage(ConstanteUtil.MSG_EXITO);
-            responseUtil.setObject(personDTO);
+            responseUtil.setObject(personWeatherDTO);
             return responseUtil;
         } catch (IllegalArgumentException p) {
             Logger.getLogger(PersonFacadeImpl.class.getName()).log(Level.SEVERE, null, p);

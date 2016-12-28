@@ -12,6 +12,9 @@ zuul:
     vlist:
       path: /vlist/**
       serviceId: value-list-services
+    weather:
+      path: /weather/**
+      serviceId: weather-services
       
 server:
   port: 8086   # HTTP (Tomcat) port

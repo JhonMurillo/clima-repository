@@ -9,6 +9,7 @@ import com.app.valueList.domains.valueList.ValueList;
 import com.app.valueList.interfaces.valueList.dto.ValueListDTO;
 import com.app.valueList.interfaces.valueList.facade.*;
 import com.app.valueList.interfaces.valueList.service.ValueListService;
+import com.app.valueList.jms.messages.JmsValueListService;
 import com.app.valueList.utils.ConstanteUtil;
 import com.app.valueList.utils.ObjectMapperUtil;
 import com.app.valueList.utils.ResponseUtil;
@@ -31,6 +32,9 @@ public class ValueListFacadeImpl implements ValueListFacade {
 
     @Autowired
     ValueListService valueListService;
+    
+    @Autowired
+    JmsValueListService jmsValueListService;
 
     public ObjectMapper objectMapper = ObjectMapperUtil.getInstanceObjectMapper();
 
@@ -77,6 +81,7 @@ public class ValueListFacadeImpl implements ValueListFacade {
             ValueList valueList = objectMapper.convertValue(valueListDTO, ValueList.class);
             valueListService.save(valueList);
             valueListDTO = objectMapper.convertValue(valueList, ValueListDTO.class);
+            jmsValueListService.sendValueList(valueListDTO);
             responseUtil.setTipo(ConstanteUtil.CODE_OK);
             responseUtil.setMessage(ConstanteUtil.MSG_EXITO);
             responseUtil.setObject(valueListDTO);

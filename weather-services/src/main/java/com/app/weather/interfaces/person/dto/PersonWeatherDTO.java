@@ -1,0 +1,148 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package com.app.weather.interfaces.person.dto;
+
+//import com.app.weather.interfaces.cityPerson.dto.CityPersonDTO;
+import com.app.weather.interfaces.cityPerson.dto.CityPersonDTO;
+import com.app.weather.interfaces.user.dto.UserDTO;
+import java.util.Date;
+import java.util.List;
+
+/**
+ *
+ * @author DESARROLLO
+ */
+public class PersonWeatherDTO {
+
+    private Integer id;
+    private String name;
+    private String lastname;
+    private String phone;
+    private String email;
+    private Long idState;
+    private Long idGender;
+    private Date birthDate;
+    private Long idBornCity;
+    private UserDTO userDTO;
+    private List<CityPersonDTO> listFrecuentCity;
+    private List<Long> listCityDelete;
+
+    public PersonWeatherDTO() {
+    }
+
+    public PersonWeatherDTO(Integer id, String name, String lastname, String phone, String email, Long idState, UserDTO userDTO) {
+        this.id = id;
+        this.name = name;
+        this.lastname = lastname;
+        this.phone = phone;
+        this.email = email;
+        this.idState = idState;
+        this.userDTO = userDTO;
+    }
+
+    public Integer getId() {
+        return id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public String getLastname() {
+        return lastname;
+    }
+
+    public String getPhone() {
+        return phone;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public UserDTO getUserDTO() {
+        return userDTO;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setLastname(String lastname) {
+        this.lastname = lastname;
+    }
+
+    public void setPhone(String phone) {
+        this.phone = phone;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public void setUserDTO(UserDTO userDTO) {
+        this.userDTO = userDTO;
+    }
+
+    public Date getBirthDate() {
+        return birthDate;
+    }
+
+    public void setBirthDate(Date birthDate) {
+        this.birthDate = birthDate;
+    }
+
+    public Long getIdState() {
+        return idState;
+    }
+
+    public void setIdState(Long idState) {
+        this.idState = idState;
+    }
+
+    public Long getIdGender() {
+        return idGender;
+    }
+
+    public void setIdGender(Long idGender) {
+        this.idGender = idGender;
+    }
+
+    public Long getIdBornCity() {
+        return idBornCity;
+    }
+
+    public void setIdBornCity(Long idBornCity) {
+        this.idBornCity = idBornCity;
+    }
+
+    public List<CityPersonDTO> getListFrecuentCity() {
+        return listFrecuentCity;
+    }
+
+    public void setListFrecuentCity(List<CityPersonDTO> listFrecuentCity) {
+        this.listFrecuentCity = listFrecuentCity;
+    }
+
+    /**
+     * @return the listCityDelete
+     */
+    public List<Long> getListCityDelete() {
+        return listCityDelete;
+    }
+
+    /**
+     * @param listCityDelete the listCityDelete to set
+     */
+    public void setListCityDelete(List<Long> listCityDelete) {
+        this.listCityDelete = listCityDelete;
+    }
+
+}

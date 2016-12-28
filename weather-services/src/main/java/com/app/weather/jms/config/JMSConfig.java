@@ -16,6 +16,9 @@ public class JMSConfig {
     @Value("${jms.clientid.queue}")
     private String clientidQueue;
 
+    @Value("${jms.clientid.topic}")
+    private String clientidTopic;
+
     @Value("${jms.cache.size}")
     private int jmsCacheSize;
 
@@ -26,6 +29,18 @@ public class JMSConfig {
         ccf.setSessionCacheSize(jmsCacheSize);
         DefaultJmsListenerContainerFactory dmlc = new DefaultJmsListenerContainerFactory();
         dmlc.setConnectionFactory(ccf);
+        return dmlc;
+    }
+
+    @Bean
+    public DefaultJmsListenerContainerFactory jmsTopicListenerContainerFactory(ConnectionFactory connectionFactory) {
+        CachingConnectionFactory ccf = new CachingConnectionFactory(connectionFactory);
+        ccf.setClientId(clientidTopic);
+        ccf.setSessionCacheSize(jmsCacheSize);
+        DefaultJmsListenerContainerFactory dmlc = new DefaultJmsListenerContainerFactory();
+        dmlc.setPubSubDomain(true);
+        dmlc.setConnectionFactory(ccf);
+        dmlc.setRecoveryInterval(3000L);
         return dmlc;
     }
 }
