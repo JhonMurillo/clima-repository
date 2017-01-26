@@ -9,6 +9,7 @@ import com.app.app.domains.cityPerson.CityPerson;
 import com.app.app.interfaces.cityPerson.dto.CityPersonDTO;
 import com.app.app.interfaces.cityPerson.facade.CityPersonFacade;
 import com.app.app.interfaces.cityPerson.service.CityPersonService;
+import com.app.app.utils.MethodsUtil;
 import com.app.app.utils.ObjectMapperUtil;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import java.util.ArrayList;
@@ -33,6 +34,8 @@ public class CityPersonFacadeImpl implements CityPersonFacade {
     @Override
     public CityPersonDTO save(CityPersonDTO cityPersonDTO) {
         CityPerson cityPerson = objectMapper.convertValue(cityPersonDTO, CityPerson.class);
+
+//        CityPerson cityPerson = MethodsUtil.convertObject(cityPCersonDTO);
         return objectMapper.convertValue(cityPersonService.save(cityPerson), CityPersonDTO.class);
     }
 

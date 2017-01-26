@@ -9,20 +9,22 @@ package com.app.app.utils;
  *
  * @author Desarrollo3
  */
-import com.app.app.domains.user.User;
-import com.app.app.interfaces.user.dto.UserDTO;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 public class MethodsUtil {
 
-    public static Object convertObject(Object object) {
+    /**
+     *
+     * @param <T>
+     * @param t
+     * @return
+     */
+    public static <T> T convertObject(T t) {
         ObjectMapper objectMapper = ObjectMapperUtil.getInstanceObjectMapper();
-        Object obj = new Object();
-        obj = objectMapper.convertValue(object, Object.class);
+
+        T obj = null;
+        obj = objectMapper.convertValue(t, (Class<T>) t.getClass());
         return obj;
     }
 
-    public static User convertObject(UserDTO userDTO, Class<User> aClass) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
 }

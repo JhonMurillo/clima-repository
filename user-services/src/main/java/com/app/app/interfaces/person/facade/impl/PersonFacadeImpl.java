@@ -84,14 +84,16 @@ public class PersonFacadeImpl implements PersonFacade {
                 }
             }
 
-            for (Long id : personWeatherDTO.getListCityDelete()) {
+            personWeatherDTO.getListCityDelete().forEach((id) -> {
                 cityPersonFacade.delete(id);
-            }
+            });
 
             for (Long idCity : personDTO.getListFrecuentCity()) {
                 CityPersonDTO cityPersonDTO = new CityPersonDTO();
                 cityPersonDTO = cityPersonFacade.findByIdCityAndIdPerson(idCity, person.id());
-                personWeatherDTO.getListFrecuentCity().add(cityPersonFacade.save(cityPersonDTO));
+                if (cityPersonDTO != null) {
+                    personWeatherDTO.getListFrecuentCity().add(cityPersonFacade.save(cityPersonDTO));
+                }
             }
 
             jmsUserService.sendPerson(personWeatherDTO);

@@ -20,6 +20,7 @@ import org.springframework.stereotype.Component;
 import com.app.valueList.jms.messages.JmsValueListService;
 import com.app.valueList.interfaces.valueList.dto.ValueListDTO;
 import org.apache.activemq.command.ActiveMQTopic;
+import org.springframework.jms.JmsException;
 
 /**
  *
@@ -40,21 +41,18 @@ public class JmsValueListImpl implements JmsValueListService {
 
     @Override
     public void sendValueList(ValueListDTO valueListDTO) {
-        MessageCreator messageCreator = new MessageCreator() {
-            @Override
-            public Message createMessage(Session session) throws JMSException {
-                try {
-                    String json = mapper.writeValueAsString(valueListDTO);
-                    return session.createTextMessage(json);
-                } catch (JsonProcessingException e) {
-                    LOG.error(" Error al crear json para creación de cola  : " + e);
-                }
-                return null;
+        MessageCreator messageCreator = (Session session) -> {
+            try {
+                String json = mapper.writeValueAsString(valueListDTO);
+                return session.createTextMessage(json);
+            } catch (JsonProcessingException e) {
+                LOG.error(" Error al crear json para creación de cola  : " + e);
             }
+            return null;
         };
         try {
             jmsTemplate.send(topicJmsValueList, messageCreator);
-        } catch (Exception e) {
+        } catch (JmsException e) {
             LOG.error("Error al enviar la cola de mensajes a usuario financiero  :" + e);
         }
     }

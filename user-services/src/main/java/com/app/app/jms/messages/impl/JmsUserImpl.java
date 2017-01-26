@@ -20,9 +20,8 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 import com.app.app.jms.messages.JmsUserService;
 import com.fasterxml.jackson.core.JsonProcessingException;
-import javax.jms.JMSException;
-import javax.jms.Message;
 import javax.jms.Session;
+import org.springframework.jms.JmsException;
 import org.springframework.jms.annotation.JmsListener;
 import org.springframework.jms.core.JmsTemplate;
 import org.springframework.jms.core.MessageCreator;
@@ -63,21 +62,18 @@ public class JmsUserImpl implements JmsUserService {
 
     @Override
     public void sendPerson(PersonWeatherDTO personWeatherDTO) {
-        MessageCreator messageCreator = new MessageCreator() {
-            @Override
-            public Message createMessage(Session session) throws JMSException {
-                try {
-                    String json = mapper.writeValueAsString(personWeatherDTO);
-                    return session.createTextMessage(json);
-                } catch (JsonProcessingException e) {
-                    LOG.error(" Error al crear json para creación de cola  : " + e);
-                }
-                return null;
+        MessageCreator messageCreator = (Session session) -> {
+            try {
+                String json = mapper.writeValueAsString(personWeatherDTO);
+                return session.createTextMessage(json);
+            } catch (JsonProcessingException e) {
+                LOG.error(" Error al crear json para creación de cola  : " + e);
             }
+            return null;
         };
         try {
             jmsTemplate.send(queueJmsSendUser, messageCreator);
-        } catch (Exception e) {
+        } catch (JmsException e) {
             LOG.error("Error al enviar la cola de mensajes a usuario financiero  :" + e);
         }
     }

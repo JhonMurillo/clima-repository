@@ -51,6 +51,8 @@ D:\clima-repository\user-services\src\main\java\com\app\app\interfaces\valueList
 D:\clima-repository\user-services\src\main\java\com\app\app\utils\ObjectMapperUtil.java
 D:\clima-repository\user-services\src\main\java\com\app\app\interfaces\userAccess\web\ControllerUserAccess.java
 D:\clima-repository\user-services\src\main\java\com\app\app\interfaces\userAccess\facade\impl\UserAccessFacadeImpl.java
+D:\clima-repository\user-services\src\main\java\com\app\app\interfaces\person\dto\PersonWeatherDTO.java
+D:\clima-repository\user-services\src\main\java\com\app\app\scheduledTask\TaskUser.java
 D:\clima-repository\user-services\src\main\java\com\app\app\domains\cityPerson\CityPersonRepository.java
 D:\clima-repository\user-services\src\main\java\com\app\app\domains\user\User.java
 D:\clima-repository\user-services\src\main\java\com\app\app\interfaces\userAccess\facade\UserAccessFacade.java

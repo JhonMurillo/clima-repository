@@ -1,0 +1,25 @@
+# Spring properties
+spring:
+  freemarker:
+    enabled: false           # Ignore Eureka dashboard FreeMarker templates
+  thymeleaf:
+    cache: false             # Allow Thymeleaf templates to be reloaded at runtime
+    prefix: classpath:/templates/    # Trailing / mandatory
+  profiles:
+    active: native  
+  activemq:
+    broker-url: tcp://127.0.0.1:61616
+    user: admin
+    password: admin
+    
+# Discovery Server Access
+eureka:
+  instance:
+    lease-renewal-interval-in-seconds: 1
+    prefer-ip-address: true
+    metadataMap:
+      instanceId: ${spring.application.name}:${spring.application.instance_id:${random.value}}
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:1111/eureka/
+
