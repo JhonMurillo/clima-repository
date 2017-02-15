@@ -66,13 +66,14 @@ public class PersonFacadeImpl implements PersonFacade {
             User user = objectMapper.convertValue(userDTO, User.class);
             userService.save(user);
             userDTO = objectMapper.convertValue(user, UserDTO.class);
-            personDTO = objectMapper.convertValue(person, PersonDTO.class);
+//            personDTO = objectMapper.convertValue(person, PersonDTO.class);
+            personDTO.setId(Integer.parseInt(person.id().toString()));
             personDTO.setUserDTO(userDTO);
             PersonWeatherDTO personWeatherDTO = new PersonWeatherDTO();
             personWeatherDTO.setListCityDelete(new ArrayList<>());
             personWeatherDTO.setListFrecuentCity(new ArrayList<>());
             List<CityPersonDTO> cityPersonDTOs = cityPersonFacade.findByIdPerson(person.id());
-            for (CityPersonDTO cityPersonDTO : cityPersonDTOs) {
+            cityPersonDTOs.stream().forEach((cityPersonDTO) -> {
                 boolean flag = false;
                 for (Long idCity : personDTO.getListFrecuentCity()) {
                     if (Objects.equals(idCity, cityPersonDTO.getIdCity())) {
@@ -82,19 +83,32 @@ public class PersonFacadeImpl implements PersonFacade {
                 if (!flag) {
                     personWeatherDTO.getListCityDelete().add(cityPersonDTO.getId());
                 }
-            }
+            });
 
             personWeatherDTO.getListCityDelete().forEach((id) -> {
                 cityPersonFacade.delete(id);
             });
 
-            for (Long idCity : personDTO.getListFrecuentCity()) {
-                CityPersonDTO cityPersonDTO = new CityPersonDTO();
-                cityPersonDTO = cityPersonFacade.findByIdCityAndIdPerson(idCity, person.id());
-                if (cityPersonDTO != null) {
+            personDTO.getListFrecuentCity().stream().forEach((idCity) -> {
+                CityPersonDTO cityPersonDTO = cityPersonFacade.findByIdCityAndIdPerson(idCity, person.id());
+                if (cityPersonDTO == null) {
+                    cityPersonDTO = new CityPersonDTO();
+                    cityPersonDTO.setIdCity(idCity);
+                    cityPersonDTO.setIdPerson(person.id());
                     personWeatherDTO.getListFrecuentCity().add(cityPersonFacade.save(cityPersonDTO));
                 }
-            }
+            });
+
+            personWeatherDTO.setBirthDate(personDTO.getBirthDate());
+            personWeatherDTO.setEmail(personDTO.getEmail());
+            personWeatherDTO.setId(personDTO.getId());
+            personWeatherDTO.setIdBornCity(personDTO.getIdBornCity());
+            personWeatherDTO.setIdGender(personDTO.getIdGender());
+            personWeatherDTO.setIdState(personDTO.getIdState());
+            personWeatherDTO.setLastname(personDTO.getLastname());
+            personWeatherDTO.setName(personDTO.getName());
+            personWeatherDTO.setPhone(personDTO.getPhone());
+            personWeatherDTO.setUserDTO(personDTO.getUserDTO());
 
             jmsUserService.sendPerson(personWeatherDTO);
             personDTO.getUserDTO().setPassword(null);

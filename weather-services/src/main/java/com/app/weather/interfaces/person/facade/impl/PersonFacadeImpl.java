@@ -7,7 +7,8 @@ package com.app.weather.interfaces.person.facade.impl;
 
 import com.app.weather.domains.person.Person;
 import com.app.weather.domains.user.User;
-import com.app.weather.interfaces.person.dto.PersonDTO;
+import com.app.weather.interfaces.cityPerson.dto.CityPersonDTO;
+import com.app.weather.interfaces.cityPerson.facade.CityPersonFacade;
 import com.app.weather.interfaces.person.dto.PersonWeatherDTO;
 import com.app.weather.interfaces.person.facade.PersonFacade;
 import com.app.weather.interfaces.person.service.PersonService;
@@ -39,6 +40,9 @@ public class PersonFacadeImpl implements PersonFacade {
     @Autowired
     UserService userService;
 
+    @Autowired
+    CityPersonFacade cityPersonFacade;
+
     public ObjectMapper objectMapper = ObjectMapperUtil.getInstanceObjectMapper();
 
     @Override
@@ -52,9 +56,22 @@ public class PersonFacadeImpl implements PersonFacade {
             User user = objectMapper.convertValue(userDTO, User.class);
             userService.save(user);
             userDTO = objectMapper.convertValue(user, UserDTO.class);
-            personWeatherDTO = objectMapper.convertValue(person, PersonWeatherDTO.class);
+//            personWeatherDTO = objectMapper.convertValue(person, PersonWeatherDTO.class);
+            personWeatherDTO.setId(Integer.parseInt(person.id().toString()));
             userDTO.setPassword(null);
             personWeatherDTO.setUserDTO(userDTO);
+
+            personWeatherDTO.getListCityDelete().forEach((id) -> {
+                cityPersonFacade.delete(id);
+            });
+
+//            personWeatherDTO.getListFrecuentCity().stream().forEach((cityPersonDTO) -> {
+//                cityPersonFacade.save(cityPersonDTO);
+//            });
+            for (CityPersonDTO cityPersonDTO : personWeatherDTO.getListFrecuentCity()) {
+                cityPersonFacade.save(cityPersonDTO);
+            }
+
             responseUtil.setTipo(ConstanteUtil.CODE_OK);
             responseUtil.setMessage(ConstanteUtil.MSG_EXITO);
             responseUtil.setObject(personWeatherDTO);

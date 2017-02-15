@@ -39,7 +39,6 @@ com\app\app\interfaces\person\web\ControllerPerson.class
 com\app\app\jms\messages\JmsUserService.class
 com\app\app\utils\ObjectMapperUtil.class
 com\app\app\utils\RestrictionDB.class
-com\app\app\jms\messages\impl\JmsUserImpl$1.class
 com\app\app\domains\user\User.class
 com\app\app\interfaces\userAccess\facade\impl\UserAccessFacadeImpl.class
 com\app\app\interfaces\cityPerson\service\CityPersonService.class

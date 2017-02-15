@@ -83,7 +83,7 @@ public class LoginFacadeImpl implements LoginFacade {
         person = personService.findById(user.idPerson());
         String state = "";
         if (person != null) {
-            state = valueListService.findById(person.idState()).description();
+            state = valueListService.findById(person.idState()).value();
         }
         if (person != null && state.equals(ConstanteUtil.STATE_ACTIVO)) {
             boolean passok = PasswordService.equalsPassword(credentials.getPassword(), user.password());
