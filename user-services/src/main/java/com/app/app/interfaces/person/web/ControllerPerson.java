@@ -35,12 +35,12 @@ public class ControllerPerson {
 
     @Autowired
     PersonFacade personFacade;
-    
+
     @RequestMapping(method = RequestMethod.POST)
     @ResponseStatus(HttpStatus.CREATED)
     @ApiOperation(value = "Save Person", notes = "Return ResponseUtil")
     public ResponseUtil saveUser(@RequestBody @Valid PersonDTO personDTO) {
-        return personFacade.savePerson(personDTO);
+            return personFacade.savePerson(personDTO);
     }
 
 }

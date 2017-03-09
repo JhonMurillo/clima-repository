@@ -21,6 +21,7 @@ import org.springframework.transaction.annotation.Transactional;
 import org.springframework.stereotype.Component;
 import com.app.weather.utils.ObjectMapperUtil;
 import com.app.weather.utils.ResponseUtil;
+import java.security.NoSuchAlgorithmException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import org.springframework.dao.DataIntegrityViolationException;
@@ -86,6 +87,15 @@ public class PersonFacadeImpl implements PersonFacade {
         }
         responseUtil.setTipo(ConstanteUtil.CODE_INTERNAL_ERROR);
         responseUtil.setMessage(ConstanteUtil.MSG_FALLIDO);
+        return responseUtil;
+    }
+
+    @Override
+    public ResponseUtil resetPassword(UserDTO userDTO) {
+        ResponseUtil responseUtil = new ResponseUtil();
+        userService.save(objectMapper.convertValue(userDTO, User.class));
+        responseUtil.setMessage(ConstanteUtil.MSG_EXITO);
+        responseUtil.setTipo(ConstanteUtil.CODE_OK);
         return responseUtil;
     }
 }

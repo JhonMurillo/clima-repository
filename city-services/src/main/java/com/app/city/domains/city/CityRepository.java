@@ -6,6 +6,7 @@
 package com.app.city.domains.city;
 
 import java.util.List;
+import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 
 /**
@@ -21,5 +22,8 @@ public interface CityRepository extends CrudRepository<City, Long> {
     City findByCode(String code);
 
     City findByLatitudeAndLongitude(String latitude, String longitude);
+
+    @Query(nativeQuery = true, value = "select * from city where lower(name) like %?1%")
+    public List<City> findByNameLike(String name);
 
 }

@@ -28,4 +28,6 @@ public interface CityFacade {
     CityDTO findByCode(String code);
 
     CityDTO findByLatitudeAndLongitude(String latitude, String longitude);
+    
+    List<CityDTO> findByNameLike(String name);
 }

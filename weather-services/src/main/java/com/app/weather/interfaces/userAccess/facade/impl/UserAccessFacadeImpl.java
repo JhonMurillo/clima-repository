@@ -5,6 +5,8 @@
  */
 package com.app.weather.interfaces.userAccess.facade.impl;
 
+import com.app.app.interfaces.userAccess.dto.UserAccessDTO;
+import com.app.weather.domains.userAccess.UserAccess;
 import com.app.weather.interfaces.userAccess.facade.UserAccessFacade;
 import com.app.weather.interfaces.userAccess.service.UserAccessService;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -25,5 +27,10 @@ public class UserAccessFacadeImpl implements UserAccessFacade {
     UserAccessService userAccessService;
 
     public ObjectMapper objectMapper = ObjectMapperUtil.getInstanceObjectMapper();
+
+    @Override
+    public void save(UserAccessDTO accessDTO) {
+        userAccessService.save(objectMapper.convertValue(accessDTO, UserAccess.class));
+    }
 
 }

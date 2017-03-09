@@ -81,4 +81,10 @@ public class ControllerCity {
         return cityFacade.findByLatitudeAndLongitude(latitude, longitude);
     }
 
+    @RequestMapping(value = "findByNameLike/{name}", method = RequestMethod.GET)
+    @ApiOperation(value = "findByNameLike/{name}", notes = "Return  CityDTOs By Name Like")
+    public List<CityDTO> findByNameLike(@PathVariable("name") String name) {
+        return cityFacade.findByNameLike(name.toLowerCase());
+    }
+
 }

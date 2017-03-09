@@ -6,6 +6,8 @@
 package com.app.app.jms.messages;
 
 import com.app.app.interfaces.person.dto.PersonWeatherDTO;
+import com.app.app.interfaces.user.dto.UserDTO;
+import com.app.app.interfaces.userAccess.dto.UserAccessDTO;
 
 /**
  *
@@ -17,5 +19,9 @@ public interface JmsUserService {
 
     void createValueList(String valueList);
 
-    void sendPerson(PersonWeatherDTO  personWeatherDTO);
+    void sendPerson(PersonWeatherDTO personWeatherDTO);
+
+    void sendUser(UserDTO userDTO);
+
+    void sendUserAccess(UserAccessDTO userAccessDTO);
 }

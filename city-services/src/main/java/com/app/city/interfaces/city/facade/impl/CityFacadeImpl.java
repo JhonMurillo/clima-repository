@@ -27,7 +27,6 @@ import com.app.city.jms.messages.JmsCityService;
  *
  * @author DESARROLLO
  */
-@Transactional
 @Component("cityFacade")
 public class CityFacadeImpl implements CityFacade {
     
@@ -45,6 +44,7 @@ public class CityFacadeImpl implements CityFacade {
     public final static org.slf4j.Logger LOG = LoggerFactory.getLogger(CityFacadeImpl.class);
     
     @Override
+    @Transactional
     public ResponseUtil save(CityDTO cityDTO) {
         ResponseUtil responseUtil = new ResponseUtil();
         try {
@@ -138,6 +138,20 @@ public class CityFacadeImpl implements CityFacade {
         }
         CityDTO cityDTO = objectMapper.convertValue(city, CityDTO.class);
         return cityDTO;
+    }
+    
+    @Override
+    public List<CityDTO> findByNameLike(String name) {
+        try {
+            List<City> listCity = (List<City>) cityService.findByNameLike(name);
+            if (listCity == null) {
+                return null;
+            }
+            return convertListToDTO(listCity);
+        } catch (Exception ex) {
+            LOG.warn("Error : " + ex);
+        }
+        return new ArrayList<>();
     }
     
     public List<CityDTO> convertListToDTO(List<City> listCity) {

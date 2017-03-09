@@ -57,4 +57,9 @@ public class CityServiceImpl implements CityService {
         return cityRepository.findByLatitudeAndLongitude(latitude, longitude);
     }
 
+    @Override
+    public List<City> findByNameLike(String name) {
+        return cityRepository.findByNameLike(name);
+    }
+
 }

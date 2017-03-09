@@ -27,4 +27,6 @@ public interface CityService {
     City findByCode(String code);
 
     City findByLatitudeAndLongitude(String latitude, String longitude);
+    
+    List<City> findByNameLike(String name);
 }

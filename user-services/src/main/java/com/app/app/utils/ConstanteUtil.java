@@ -43,6 +43,12 @@ public class ConstanteUtil {
     public static final String MSG_USER_NO_LOGIN = "USUARIO NO ESTA LOGUEADO.";
     public static final String MSG_USER_ERROR_LOGOUT = "ERROR AL CERRAR LA SESION DEL USUARIO.";
     public static final String MSG_USER_LOGOUT = "CIERRE DE SESION EXITOSA.";
+    public static final String MSG_PASS_NO_EQUALS = "CONTRASEÑA ACTUAL NO ES IGUAL A LA ALMACENADA";
+    
+    /**
+     * MSG - RESTRICTION
+     */
+    public static final String MSG_RESTRICTION_EMAIL = "ESTE EMAIL YA SE ENCUENTRA REGISTRADO EN LA PLATAFORMA";
 
     /**
      * STATES

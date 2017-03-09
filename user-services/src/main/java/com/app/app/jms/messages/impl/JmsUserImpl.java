@@ -8,6 +8,8 @@ package com.app.app.jms.messages.impl;
 import com.app.app.interfaces.city.dto.CityDTO;
 import com.app.app.interfaces.city.facade.CityFacade;
 import com.app.app.interfaces.person.dto.PersonWeatherDTO;
+import com.app.app.interfaces.user.dto.UserDTO;
+import com.app.app.interfaces.userAccess.dto.UserAccessDTO;
 import com.app.app.interfaces.valueList.dto.ValueListDTO;
 import com.app.app.interfaces.valueList.facade.ValueListFacade;
 import com.app.app.utils.ObjectMapperUtil;
@@ -40,6 +42,12 @@ public class JmsUserImpl implements JmsUserService {
 
     @Value("${messages.queue.jmsuser}")
     private String queueJmsSendUser;
+
+    @Value("${messages.queue.jmsuserdto}")
+    private String queueJmsSendUserDTO;
+
+    @Value("${messages.queue.jmsuseraccessdto}")
+    private String queueJmsSendUserAccessDTO;
 
     @Autowired
     private CityFacade cityFacade;
@@ -86,6 +94,42 @@ public class JmsUserImpl implements JmsUserService {
             valueListFacade.save(valueListDTO);
         } catch (IOException | IllegalArgumentException e) {
             LOG.error("Error : " + e);
+        }
+    }
+
+    @Override
+    public void sendUser(UserDTO userDTO) {
+        MessageCreator messageCreator = (Session session) -> {
+            try {
+                String json = mapper.writeValueAsString(userDTO);
+                return session.createTextMessage(json);
+            } catch (JsonProcessingException e) {
+                LOG.error(" Error al crear json para creación de cola  : " + e);
+            }
+            return null;
+        };
+        try {
+            jmsTemplate.send(queueJmsSendUserDTO, messageCreator);
+        } catch (JmsException e) {
+            LOG.error("Error al enviar la cola de mensajes a usuario financiero  :" + e);
+        }
+    }
+
+    @Override
+    public void sendUserAccess(UserAccessDTO userAccessDTO) {
+        MessageCreator messageCreator = (Session session) -> {
+            try {
+                String json = mapper.writeValueAsString(userAccessDTO);
+                return session.createTextMessage(json);
+            } catch (JsonProcessingException e) {
+                LOG.error(" Error al crear json para creación de cola  : " + e);
+            }
+            return null;
+        };
+        try {
+            jmsTemplate.send(queueJmsSendUserAccessDTO, messageCreator);
+        } catch (JmsException e) {
+            LOG.error("Error al enviar la cola de mensajes a usuario financiero  :" + e);
         }
     }
 }

@@ -5,11 +5,14 @@ package com.app.weather.jms.messages.impl;
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
+import com.app.app.interfaces.userAccess.dto.UserAccessDTO;
 import com.app.weather.interfaces.city.dto.CityDTO;
 import com.app.weather.interfaces.city.facade.CityFacade;
 import com.app.weather.interfaces.person.dto.PersonWeatherDTO;
 import com.app.weather.utils.ObjectMapperUtil;
 import com.app.weather.interfaces.person.facade.PersonFacade;
+import com.app.weather.interfaces.user.dto.UserDTO;
+import com.app.weather.interfaces.userAccess.facade.UserAccessFacade;
 import com.app.weather.interfaces.valueList.dto.ValueListDTO;
 import com.app.weather.interfaces.valueList.facade.ValueListFacade;
 import com.app.weather.jms.messages.JmsWeatherService;
@@ -38,6 +41,9 @@ public class JmsWeatherImpl implements JmsWeatherService {
 
     @Autowired
     private CityFacade cityFacade;
+    
+    @Autowired
+    private UserAccessFacade userAccessFacade;
 
     ObjectMapper mapper = ObjectMapperUtil.getInstanceObjectMapper();
 
@@ -51,7 +57,7 @@ public class JmsWeatherImpl implements JmsWeatherService {
             LOG.error("Error : " + e);
         }
     }
-    
+
     @JmsListener(destination = "${messages.queue.jmsvaluelist}", containerFactory = "jmsTopicListenerContainerFactory")
     @Override
     public void createValueList(String valueList) {
@@ -70,6 +76,28 @@ public class JmsWeatherImpl implements JmsWeatherService {
         try {
             CityDTO cityDTO = mapper.convertValue(mapper.readTree(city), CityDTO.class);
             cityFacade.save(cityDTO);
+        } catch (IOException | IllegalArgumentException e) {
+            LOG.error("Error : " + e);
+        }
+    }
+
+    @JmsListener(destination = "${messages.queue.jmsuserdto}")
+    @Override
+    public void updateUser(String user) {
+        try {
+            UserDTO userDTO = mapper.convertValue(mapper.readTree(user), UserDTO.class);
+            personFacade.resetPassword(userDTO);
+        } catch (IOException | IllegalArgumentException e) {
+            LOG.error("Error : " + e);
+        }
+    }
+
+    @JmsListener(destination = "${messages.queue.jmsuseraccessdto}")
+    @Override
+    public void createOrUpdateUserAccess(String userAccessDTO) {
+        try {
+            UserAccessDTO accessDTO = mapper.convertValue(mapper.readTree(userAccessDTO), UserAccessDTO.class);
+            userAccessFacade.save(accessDTO);
         } catch (IOException | IllegalArgumentException e) {
             LOG.error("Error : " + e);
         }

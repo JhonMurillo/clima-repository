@@ -5,7 +5,9 @@
  */
 package com.app.app.interfaces.login.web;
 
+import com.app.app.interfaces.login.dto.EmailDTO;
 import com.app.app.interfaces.login.dto.LogoutDTO;
+import com.app.app.interfaces.login.dto.PasswordDTO;
 import com.app.app.interfaces.login.facade.LoginFacade;
 import com.app.app.interfaces.user.dto.UserDTO;
 import com.app.app.utils.ResponseUtil;
@@ -51,6 +53,20 @@ public class ControllerLogin {
     @ApiOperation(value = "Logout", notes = "Return ResponseUtil")
     public ResponseUtil logout(@RequestBody @Valid LogoutDTO logoutDTO) {
         return loginFacade.logout(logoutDTO);
+    }
+
+    @RequestMapping(value = "resetPassword", method = RequestMethod.POST)
+    @ApiOperation(value = "resetPassword", notes = "Return a ResponseUtil By Email")
+    @ResponseStatus(HttpStatus.CREATED)
+    public ResponseUtil resetPassword(@RequestBody @Valid EmailDTO emailDTO) {
+        return loginFacade.resetPassword(emailDTO.getEmail());
+    }
+
+    @RequestMapping(value = "updatePassword", method = RequestMethod.POST)
+    @ApiOperation(value = "updatePassword", notes = "Return a ResponseUtil")
+    @ResponseStatus(HttpStatus.CREATED)
+    public ResponseUtil updatePassword(@RequestBody @Valid PasswordDTO passwordDTO) {
+        return loginFacade.updatePassword(passwordDTO);
     }
 
 }

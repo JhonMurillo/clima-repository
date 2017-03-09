@@ -50,6 +50,8 @@ messages:
         jmsvaluelist: jmsvaluelist
         jmscity: jmscity
         jmsuser: jmsuser
+        jmsuserdto: jmsuserdto
+        jmsuseraccessdto: jmsuseraccessdto
 jms:
     cache:
         size: 10

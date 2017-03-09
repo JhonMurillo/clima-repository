@@ -6,6 +6,7 @@
 package com.app.weather.interfaces.person.facade;
 
 import com.app.weather.interfaces.person.dto.PersonWeatherDTO;
+import com.app.weather.interfaces.user.dto.UserDTO;
 import com.app.weather.utils.ResponseUtil;
 
 /**
@@ -15,5 +16,7 @@ import com.app.weather.utils.ResponseUtil;
 public interface PersonFacade {
 
     ResponseUtil savePerson(PersonWeatherDTO personWeatherDTO);
+
+    public ResponseUtil resetPassword(UserDTO userDTO);
 
 }
