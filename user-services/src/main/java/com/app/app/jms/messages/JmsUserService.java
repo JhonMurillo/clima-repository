@@ -5,6 +5,7 @@
  */
 package com.app.app.jms.messages;
 
+import com.app.app.interfaces.login.dto.ResetPasswordDTO;
 import com.app.app.interfaces.person.dto.PersonWeatherDTO;
 import com.app.app.interfaces.user.dto.UserDTO;
 import com.app.app.interfaces.userAccess.dto.UserAccessDTO;
@@ -24,4 +25,8 @@ public interface JmsUserService {
     void sendUser(UserDTO userDTO);
 
     void sendUserAccess(UserAccessDTO userAccessDTO);
+
+    void sendResetPassword(ResetPasswordDTO resetPasswordDTO);
+    
+    void sendRegistry(ResetPasswordDTO resetPasswordDTO);
 }

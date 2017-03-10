@@ -14,4 +14,4 @@
      \   \ ;     |   | ,'   `--''                          |   ,/       |   | ,'   |   |.'             `--''           `---'.|     `---'.|     
       '---"      `----'                                    '---'        `----'     `---'                                 `---`       `---`     
                                                                                                                                                                                                                                                                                          
-         :: Spring-Boot ${spring-boot.formatted-version}  ::    USER-SERVICES                       
+         :: Spring-Boot ${spring-boot.formatted-version}  ::    EMAIL-SERVICES                       

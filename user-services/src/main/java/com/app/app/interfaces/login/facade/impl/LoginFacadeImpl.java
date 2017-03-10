@@ -12,6 +12,7 @@ import com.app.app.jms.AuthUtils;
 import com.app.app.jms.PasswordService;
 import com.app.app.interfaces.login.dto.LogoutDTO;
 import com.app.app.interfaces.login.dto.PasswordDTO;
+import com.app.app.interfaces.login.dto.ResetPasswordDTO;
 import com.app.app.interfaces.login.facade.LoginFacade;
 import com.app.app.interfaces.person.dto.PersonDTO;
 import com.app.app.interfaces.person.service.PersonService;
@@ -192,6 +193,20 @@ public class LoginFacadeImpl implements LoginFacade {
             userService.save(objectMapper.convertValue(userDTO, User.class));
 
             jmsUserService.sendUser(userDTO);
+
+            Person person = personService.findById(user.idPerson());
+
+            StringBuilder nombreCompleto = new StringBuilder();
+            nombreCompleto.append(person.name());
+            nombreCompleto.append(" ");
+            nombreCompleto.append(person.lastname());
+
+            ResetPasswordDTO resetPasswordDTO = new ResetPasswordDTO();
+            resetPasswordDTO.setEmail(user.userName());
+            resetPasswordDTO.setPassword(passwordRamdon);
+            resetPasswordDTO.setNombreCompleto(nombreCompleto.toString());
+
+            jmsUserService.sendResetPassword(resetPasswordDTO);
 
             responseUtil.setObject(passwordRamdon);
             responseUtil.setMessage(ConstanteUtil.MSG_EXITO);

@@ -4,3 +4,4 @@
 /value-list-services/target/
 /weather-services/target/
 .netbeans_automatic_build
+/email-services/target/

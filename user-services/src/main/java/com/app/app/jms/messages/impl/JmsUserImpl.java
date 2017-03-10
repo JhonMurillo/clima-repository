@@ -7,6 +7,7 @@ package com.app.app.jms.messages.impl;
  */
 import com.app.app.interfaces.city.dto.CityDTO;
 import com.app.app.interfaces.city.facade.CityFacade;
+import com.app.app.interfaces.login.dto.ResetPasswordDTO;
 import com.app.app.interfaces.person.dto.PersonWeatherDTO;
 import com.app.app.interfaces.user.dto.UserDTO;
 import com.app.app.interfaces.userAccess.dto.UserAccessDTO;
@@ -48,6 +49,12 @@ public class JmsUserImpl implements JmsUserService {
 
     @Value("${messages.queue.jmsuseraccessdto}")
     private String queueJmsSendUserAccessDTO;
+
+    @Value("${messages.queue.jmsresetpassword}")
+    private String queueJmsResetPassword;
+    
+    @Value("${messages.queue.jmsregistry}")
+    private String queueJmsRegistry;
 
     @Autowired
     private CityFacade cityFacade;
@@ -128,6 +135,43 @@ public class JmsUserImpl implements JmsUserService {
         };
         try {
             jmsTemplate.send(queueJmsSendUserAccessDTO, messageCreator);
+        } catch (JmsException e) {
+            LOG.error("Error al enviar la cola de mensajes a usuario financiero  :" + e);
+        }
+    }
+
+    @Override
+    public void sendResetPassword(ResetPasswordDTO resetPasswordDTO) {
+        MessageCreator messageCreator = (Session session) -> {
+            try {
+                String json = mapper.writeValueAsString(resetPasswordDTO);
+                return session.createTextMessage(json);
+            } catch (JsonProcessingException e) {
+                LOG.error(" Error al crear json para creación de cola  : " + e);
+            }
+            return null;
+        };
+        try {
+            jmsTemplate.send(queueJmsResetPassword, messageCreator);
+        } catch (JmsException e) {
+            LOG.error("Error al enviar la cola de mensajes a usuario financiero  :" + e);
+        }
+    }
+    
+    
+    @Override
+    public void sendRegistry(ResetPasswordDTO resetPasswordDTO) {
+        MessageCreator messageCreator = (Session session) -> {
+            try {
+                String json = mapper.writeValueAsString(resetPasswordDTO);
+                return session.createTextMessage(json);
+            } catch (JsonProcessingException e) {
+                LOG.error(" Error al crear json para creación de cola  : " + e);
+            }
+            return null;
+        };
+        try {
+            jmsTemplate.send(queueJmsRegistry, messageCreator);
         } catch (JmsException e) {
             LOG.error("Error al enviar la cola de mensajes a usuario financiero  :" + e);
         }

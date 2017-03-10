@@ -12,6 +12,7 @@ import com.app.app.interfaces.cityPerson.dto.CityPersonDTO;
 import com.app.app.interfaces.cityPerson.facade.CityPersonFacade;
 import com.app.app.interfaces.person.dto.PersonDTO;
 import com.app.app.interfaces.person.dto.PersonWeatherDTO;
+import com.app.app.interfaces.login.dto.ResetPasswordDTO;
 import com.app.app.interfaces.person.facade.PersonFacade;
 import com.app.app.interfaces.person.service.PersonService;
 import com.app.app.interfaces.user.dto.UserDTO;
@@ -109,6 +110,13 @@ public class PersonFacadeImpl implements PersonFacade {
             personWeatherDTO.setUserDTO(personDTO.getUserDTO());
 
             jmsUserService.sendPerson(personWeatherDTO);
+            
+            ResetPasswordDTO resetPasswordDTO = new ResetPasswordDTO();
+            resetPasswordDTO.setEmail(personDTO.getEmail());
+            resetPasswordDTO.setNombreCompleto(personDTO.getName());
+
+            jmsUserService.sendRegistry(resetPasswordDTO);
+            
             personDTO.getUserDTO().setPassword(null);
             responseUtil.setTipo(ConstanteUtil.CODE_OK);
             responseUtil.setMessage(ConstanteUtil.MSG_EXITO);

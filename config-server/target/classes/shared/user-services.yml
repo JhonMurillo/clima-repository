@@ -20,7 +20,7 @@ authapp:
 spring.datasource.platform: postgres 
 spring.datasource.url: jdbc:postgresql://localhost:5432/user
 spring.datasource.username: postgres
-spring.datasource.password: 123456
+spring.datasource.password: root
 spring.datasource.driver-class-name: org.postgresql.Driver
 
 #logging:
@@ -62,6 +62,8 @@ messages:
         jmsuser: jmsuser
         jmsuserdto: jmsuserdto
         jmsuseraccessdto: jmsuseraccessdto
+        jmsresetpassword: jmsresetpassword
+        jmsregistry: jmsregistry
 
 jms:
     cache:
