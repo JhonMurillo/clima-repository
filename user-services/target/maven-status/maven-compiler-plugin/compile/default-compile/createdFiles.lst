@@ -7,6 +7,7 @@ com\app\app\domains\cityPerson\CityPersonRepository.class
 com\app\app\interfaces\user\service\UserService.class
 com\app\app\jms\PasswordService.class
 com\app\app\interfaces\city\service\CityService.class
+com\app\app\interfaces\login\dto\ResetPasswordDTO.class
 com\app\app\interfaces\userAccess\service\UserAccessService.class
 com\app\app\interfaces\valueList\service\ValueListService.class
 com\app\app\domains\cityPerson\CityPerson.class
@@ -19,7 +20,9 @@ com\app\app\interfaces\person\dto\PersonWeatherDTO.class
 com\app\app\interfaces\valueList\facade\ValueListFacade.class
 com\app\app\interfaces\userAccess\facade\UserAccessFacade.class
 com\app\app\interfaces\userAccess\web\ControllerUserAccess.class
+com\app\app\interfaces\login\dto\PasswordDTO.class
 com\app\app\domains\person\Person.class
+com\app\app\interfaces\login\dto\EmailDTO.class
 com\app\app\domains\user\UserRepository.class
 com\app\app\interfaces\cityPerson\dto\CityPersonDTO.class
 com\app\app\interfaces\user\dto\UserDTO.class
@@ -28,6 +31,7 @@ com\app\app\scheduledTask\TaskUser.class
 com\app\app\interfaces\city\dto\CityDTO.class
 com\app\app\domains\city\City.class
 com\app\app\interfaces\person\facade\impl\PersonFacadeImpl.class
+com\app\app\interfaces\userAccess\dto\UserAccessDTO.class
 com\app\app\exceptions\UserException.class
 com\app\app\utils\Messages.class
 com\app\app\domains\userAccess\UserAccessRepository.class

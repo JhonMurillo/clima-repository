@@ -1,5 +1,7 @@
 D:\clima-repository\user-services\src\main\java\com\app\app\interfaces\valueList\service\ValueListService.java
+D:\clima-repository\user-services\src\main\java\com\app\app\interfaces\login\dto\EmailDTO.java
 D:\clima-repository\user-services\src\main\java\com\app\app\interfaces\user\service\UserService.java
+D:\clima-repository\user-services\src\main\java\com\app\app\interfaces\userAccess\dto\UserAccessDTO.java
 D:\clima-repository\user-services\src\main\java\com\app\app\jms\Token.java
 D:\clima-repository\user-services\src\main\java\com\app\app\utils\RestrictionDB.java
 D:\clima-repository\user-services\src\main\java\com\app\app\interfaces\cityPerson\facade\impl\CityPersonFacadeImpl.java
@@ -9,8 +11,10 @@ D:\clima-repository\user-services\src\main\java\com\app\app\exceptions\UserExcep
 D:\clima-repository\user-services\src\main\java\com\app\app\domains\cityPerson\CityPerson.java
 D:\clima-repository\user-services\src\main\java\com\app\app\domains\userAccess\UserAccess.java
 D:\clima-repository\user-services\src\main\java\com\app\app\interfaces\city\facade\impl\CityFacadeImpl.java
+D:\clima-repository\user-services\src\main\java\com\app\app\interfaces\login\dto\ResetPasswordDTO.java
 D:\clima-repository\user-services\src\main\java\com\app\app\jms\messages\impl\JmsUserImpl.java
 D:\clima-repository\user-services\src\main\java\com\app\app\interfaces\cityPerson\service\CityPersonService.java
+D:\clima-repository\user-services\src\main\java\com\app\app\interfaces\login\dto\PasswordDTO.java
 D:\clima-repository\user-services\src\main\java\com\app\app\interfaces\userAccess\service\impl\UserAccessServiceImpl.java
 D:\clima-repository\user-services\src\main\java\com\app\app\interfaces\cityPerson\facade\CityPersonFacade.java
 D:\clima-repository\user-services\src\main\java\com\app\app\interfaces\user\service\impl\UserServiceImpl.java

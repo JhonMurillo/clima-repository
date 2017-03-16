@@ -1,0 +1,12 @@
+com.app.valueList
+com.app.valueList.domains.valueList
+com.app.valueList.interfaces.valueList.dto
+com.app.valueList.interfaces.valueList.facade
+com.app.valueList.interfaces.valueList.facade.impl
+com.app.valueList.interfaces.valueList.service
+com.app.valueList.interfaces.valueList.service.impl
+com.app.valueList.interfaces.valueList.web
+com.app.valueList.jms.config
+com.app.valueList.jms.messages
+com.app.valueList.jms.messages.impl
+com.app.valueList.utils
