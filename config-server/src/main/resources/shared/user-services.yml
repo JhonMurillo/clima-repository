@@ -18,9 +18,12 @@ authapp:
 
 ##Spring DataSource Postgres
 spring.datasource.platform: postgres 
-spring.datasource.url: jdbc:postgresql://localhost:5432/user
-spring.datasource.username: postgres
-spring.datasource.password: root
+#spring.datasource.url: jdbc:postgresql://localhost:5432/user
+#spring.datasource.username: postgres
+#spring.datasource.password: 123456
+spring.datasource.url: jdbc:postgresql://climapp.cuf3bywqzzla.us-west-2.rds.amazonaws.com:5432/user
+spring.datasource.username: pgclimapp
+spring.datasource.password: 123455600
 spring.datasource.driver-class-name: org.postgresql.Driver
 
 #logging:
